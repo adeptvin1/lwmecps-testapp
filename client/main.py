@@ -1,9 +1,9 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 from fastapi.responses import JSONResponse
 import uvicorn
-from typing import List
+# from typing import List
 
 from api.endpoints import router as api_router
 from config import settings
@@ -27,6 +27,7 @@ app.add_middleware(
 # Регистрация роутеров
 app.include_router(api_router, prefix="/api")
 
+
 # События приложения
 @app.on_event("startup")
 async def startup_db_client():
@@ -36,6 +37,7 @@ async def startup_db_client():
 # async def shutdown_db_client():
 #     await close_db_connection()
 
+
 # Обработка ошибок
 @app.exception_handler(ValidationError)
 async def validation_exception_handler(request, exc):
@@ -43,6 +45,7 @@ async def validation_exception_handler(request, exc):
         status_code=422,
         content={"detail": str(exc)},
     )
+
 
 # Корневой эндпоинт
 @app.get("/")

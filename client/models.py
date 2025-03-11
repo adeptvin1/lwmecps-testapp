@@ -3,6 +3,7 @@ from typing import Optional, List, Literal
 from datetime import datetime
 import uuid
 
+
 class CheckSettings(BaseModel):
     name: str
     target_host: str
@@ -10,12 +11,13 @@ class CheckSettings(BaseModel):
     interval_seconds: int = Field(default=60, ge=10)
     check_type: Literal["ping", "http", "tcp"] = "ping"
     timeout_seconds: float = Field(default=1.0, ge=0.1, le=10.0)
-    
+
     @validator("target_host")
     def validate_host(cls, v):
         if not v or len(v) < 2:
             raise ValueError("Хост должен быть указан")
         return v
+
 
 class CheckResult(BaseModel):
     check_id: str
@@ -24,7 +26,7 @@ class CheckResult(BaseModel):
     packet_loss_percent: float = Field(ge=0, le=100)
     duration_ms: float
     success: bool
-    
+
     class Config:
         schema_extra = {
             "example": {
@@ -37,13 +39,14 @@ class CheckResult(BaseModel):
             }
         }
 
+
 class Check(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     settings: CheckSettings
     created_at: datetime = Field(default_factory=datetime.now)
     last_run: Optional[datetime] = None
     is_active: bool = True
-    
+
     class Config:
         schema_extra = {
             "example": {
@@ -62,8 +65,10 @@ class Check(BaseModel):
             }
         }
 
+
 class ChecksList(BaseModel):
     checks: List[Check]
-    
+
+
 class ResultsList(BaseModel):
     results: List[CheckResult]
