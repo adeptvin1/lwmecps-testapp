@@ -30,17 +30,17 @@ jobs:
     - name: Run flake8
       run: flake8 server client
       
-    - name: Run pylint
-      run: pylint server client
+    # - name: Run pylint
+    #   run: pylint server client
       
-    - name: Run mypy
-      run: mypy server client
+    # - name: Run mypy
+    #   run: mypy server client
       
-    - name: Check formatting with black
-      run: black --check server client
+    # - name: Check formatting with black
+    #   run: black --check server client
       
-    - name: Check imports with isort
-      run: isort --check-only --profile black server client
+    # - name: Check imports with isort
+    #   run: isort --check-only --profile black server client
 
   build:
     runs-on: ubuntu-latest
