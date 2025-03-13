@@ -23,19 +23,19 @@ class MongoJSONEncoder(json.JSONEncoder):
 def parse_mongo_doc(doc):
     if doc is None:
         return None
-    
+
     if isinstance(doc, list):
         return [parse_mongo_doc(item) for item in doc]
-    
+
     if isinstance(doc, dict):
         return {k: parse_mongo_doc(v) for k, v in doc.items()}
-    
+
     if isinstance(doc, ObjectId):
         return str(doc)
-    
+
     if isinstance(doc, datetime):
         return doc.isoformat()
-    
+
     return doc
 
 
@@ -49,14 +49,14 @@ async def get_experiment_by_id(experiment_id: str, db=Depends(get_database)):
                             )
         if experiment is None:
             raise HTTPException(status_code=404, detail="Experiment not found")
-        
+
         # Преобразуем документ MongoDB в JSON-сериализуемый формат
         experiment = parse_mongo_doc(experiment)
-        
+
         # Преобразуем ObjectId в строку для вывода
         experiment["id"] = str(experiment["_id"])
         del experiment["_id"]  # Удаляем _id, так как уже есть id
-        
+
         return experiment
 
     except Exception as e:
@@ -198,7 +198,7 @@ async def run_experiment(experiment_id: str):
 
         # Измеряем задержку
         result = await measure_latency(host, port)
-        
+
         # Преобразуем результат в словарь
         result_dict = result.dict() if hasattr(result, 'dict') else {
             "status_code": result.status_code,
