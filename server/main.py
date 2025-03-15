@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 import uvicorn
+from prometheus_client import make_asgi_app
 # from typing import List
 
 from api.endpoints import router as api_router
@@ -13,6 +14,9 @@ app = FastAPI(
     description="API для мониторинга сетевых соединений",
     version="0.0.1"
 )
+
+metrics_app = make_asgi_app()
+app.mount("/metrics", metrics_app)
 
 # CORS middleware
 app.add_middleware(
@@ -54,9 +58,10 @@ async def root():
     }
 
 if __name__ == "__main__":
+
     uvicorn.run(
         "main:app",
-        host=settings.HOST,
-        port=settings.PORT,
-        reload=settings.DEBUG,
+        host=settings.host,
+        port=settings.port,
+        reload=settings.debug,
     )

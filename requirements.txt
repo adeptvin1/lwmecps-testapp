@@ -9,3 +9,4 @@ python-dotenv>=1.0.0
 pytest>=7.4.2
 httpx>=0.25.0
 pydantic_settings
+prometheus-client
