@@ -8,8 +8,8 @@ class Settings(BaseSettings):
     port: int = int(os.getenv("port", 8000))
     debug: bool = os.getenv("debug", "True").lower() == "true"
     # prometheus_port: str = os.getenv("prometheus_port", 9000)
-    cpu_limit: float = float(os.getenv("cpu_limit", "10"))
-    ram_limit: float = float(os.getenv("ram_limit", "1024"))  # в MB
+    cpu_limit: int = os.getenv("cpu_limit", "1000")  # mCPUs
+    ram_limit: int = os.getenv("ram_limit", "1024")  # в MB
     # MongoDB settings
     # MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017")
     # DATABASE_NAME: str = os.getenv("DATABASE_NAME", "network_checks")
