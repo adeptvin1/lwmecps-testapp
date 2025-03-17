@@ -6,6 +6,7 @@ from models import ExperimentSettings, ExperimentResult, Experiment
 import asyncio
 from database import get_database
 from bson import ObjectId
+from typing import List
 import json
 
 
@@ -115,13 +116,15 @@ async def create_experiment(
                 port: int,
                 interval: int,
                 count: int,
+                clients: int,
                 db=Depends(get_database)):
 
     settings = ExperimentSettings(
                 host=host,
                 port=port,
                 interval=interval,
-                count=count
+                count=count,
+                clients=clients
                 )
     experiment = Experiment(settings=settings)
 
@@ -168,6 +171,14 @@ async def manage_experiment(state: str,
     return {"experiment_id": experiment_id, "state": new_state}
 
 
+@router.post("/delete_experiments")
+async def delete_experiments():
+    """Эндпоинт для удаления всех экспериментов"""
+    db = await get_database()
+    db.experiments.delete_many({})
+    return 200
+
+
 async def run_experiment(experiment_id: str):
     """Фоновая задача для выполнения эксперимента"""
     # Получаем базу данных
@@ -184,46 +195,95 @@ async def run_experiment(experiment_id: str):
     port = experiment["settings"]["port"]
     interval = experiment["settings"]["interval"]
     count = experiment["settings"]["count"]
+    clients = experiment["settings"]["clients"]
 
-    # Счетчик выполненных проверок
-    completed = 0
-
-    while completed < count:
-        # Проверяем текущее состояние эксперимента
-        current_exp = await db.experiments.find_one(
-                                {"_id": ObjectId(experiment_id)}
-                                )
-        if not current_exp or current_exp["state"] != "running":
-            break
-
-        # Измеряем задержку
-        result = await measure_latency(host, port)
-
-        # Преобразуем результат в словарь
-        result_dict = result.dict() if hasattr(result, 'dict') else {
-            "status_code": result.status_code,
-            "latency_ms": result.latency_ms,
-            "timestamp": result.timestamp
-        }
-
-        # Обновляем результаты в базе данных
-        await db.experiments.update_one(
-            {"_id": ObjectId(experiment_id)},
-            {
-                "$push": {"results": result_dict},
-                "$set": {"updated_at": datetime.now()}
+    async def client_task():
+        completed = 0
+        while completed < count:
+            current_exp = await db.experiments.find_one(
+                                    {"_id": ObjectId(experiment_id)})
+            if not current_exp or current_exp["state"] != "running":
+                break
+            result = await measure_latency(host, port)
+            result_dict = result.dict() if hasattr(result, 'dict') else {
+                "status_code": result.status_code,
+                "latency_ms": result.latency_ms,
+                "timestamp": result.timestamp
             }
-        )
-
-        completed += 1
-
-        # Если достигнуто требуемое количество проверок, завершаем эксперимент
-        if completed >= count:
             await db.experiments.update_one(
                 {"_id": ObjectId(experiment_id)},
-                {"$set": {"state": "completed", "updated_at": datetime.now()}}
+                {
+                    "$push": {"results": result_dict},
+                    "$set": {"updated_at": datetime.now()}
+                }
             )
-            break
+            completed += 1
+            if completed >= count:
+                await db.experiments.update_one(
+                    {"_id": ObjectId(experiment_id)},
+                    {
+                        "$set":
+                            {
+                                "state": "completed",
+                                "updated_at": datetime.now()
+                            }
+                    }
+                )
+                break
+            await asyncio.sleep(interval)
 
-        # Ждем указанный интервал перед следующей проверкой
-        await asyncio.sleep(interval)
+    tasks = [asyncio.create_task(client_task()) for _ in range(clients)]
+    await asyncio.gather(*tasks)
+
+
+@router.post("/run_experiments_queue")
+async def run_experiments_queue(
+            experiment_ids: List[str],
+            db=Depends(get_database)):
+    """
+    Запускает эксперименты в порядке, указанном в experiment_ids.
+    """
+    if not experiment_ids:
+        raise HTTPException(
+            status_code=400,
+            detail="No experiment IDs provided")
+
+    # Проверяем, существуют ли все переданные эксперименты
+    existing_experiments = await db.experiments.find(
+        {"_id": {"$in": [ObjectId(eid) for eid in experiment_ids]}}
+    ).to_list(length=None)
+
+    existing_ids = {str(exp["_id"]) for exp in existing_experiments}
+    not_found_ids = [eid for eid in experiment_ids if eid not in existing_ids]
+
+    if not_found_ids:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Experiments not found: {not_found_ids}")
+
+    # Запускаем выполнение в фоне
+    asyncio.create_task(run_experiments_sequentially(experiment_ids, db))
+
+    return {
+        "message": "Experiments queue started",
+        "experiment_ids": experiment_ids
+        }
+
+
+async def run_experiments_sequentially(experiment_ids: List[str], db):
+    """Выполняет эксперименты последовательно, в заданном порядке."""
+    for experiment_id in experiment_ids:
+        # Обновляем статус перед запуском
+        await db.experiments.update_one(
+            {"_id": ObjectId(experiment_id)},
+            {"$set": {"state": "running", "updated_at": datetime.now()}}
+        )
+
+        # Запускаем эксперимент
+        await run_experiment(experiment_id)
+
+        # Обновляем статус после завершения
+        await db.experiments.update_one(
+            {"_id": ObjectId(experiment_id)},
+            {"$set": {"state": "completed", "updated_at": datetime.now()}}
+        )

@@ -8,6 +8,7 @@ class ExperimentSettings(BaseModel):
     port: int
     interval: int  # интервал в секундах между проверками
     count: int  # общее количество проверок
+    clients: int
 
 
 class ExperimentResult(BaseModel):
