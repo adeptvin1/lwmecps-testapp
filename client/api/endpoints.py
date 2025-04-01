@@ -2,11 +2,15 @@ from fastapi import APIRouter, HTTPException, Depends
 from datetime import datetime
 import httpx
 import time
-from models import ExperimentSettings, ExperimentResult, Experiment
+from models import (
+    ExperimentSettings, ExperimentResult, Experiment, 
+    LoadProfile, ExperimentState, ExperimentStats,
+    ExperimentGroup, GroupStats
+)
 import asyncio
 from database import get_database
 from bson import ObjectId
-from typing import List
+from typing import List, Dict
 import json
 
 
@@ -112,21 +116,23 @@ async def list_experiments(db=Depends(get_database)):
 
 @router.post("/create_experiment")
 async def create_experiment(
-                host: str,
-                port: int,
-                interval: int,
-                count: int,
-                clients: int,
-                db=Depends(get_database)):
-
+    name: str,
+    host: str,
+    port: int,
+    load_profiles: List[LoadProfile],
+    db=Depends(get_database)
+):
+    """Создает новый эксперимент с динамической нагрузкой."""
     settings = ExperimentSettings(
-                host=host,
-                port=port,
-                interval=interval,
-                count=count,
-                clients=clients
-                )
-    experiment = Experiment(settings=settings)
+        host=host,
+        port=port,
+        load_profiles=load_profiles
+    )
+    
+    experiment = Experiment(
+        name=name,
+        settings=settings
+    )
 
     # Преобразуем в словарь для MongoDB
     exp_dict = experiment.dict(exclude={"id"})
@@ -135,7 +141,6 @@ async def create_experiment(
     result = await db.experiments.insert_one(exp_dict)
     experiment_id = str(result.inserted_id)
 
-    # Возвращаем ID созданного эксперимента
     return {"experiment_id": experiment_id}
 
 
@@ -179,36 +184,75 @@ async def delete_experiments():
     return 200
 
 
-async def run_experiment(experiment_id: str):
-    """Фоновая задача для выполнения эксперимента"""
-    # Получаем базу данных
-    db = await get_database()
+@router.get("/experiment_stats")
+async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
+    """Получает текущую статистику эксперимента."""
+    experiment = await get_experiment_by_id(experiment_id, db)
+    
+    if not experiment:
+        raise HTTPException(status_code=404, detail="Experiment not found")
 
-    # Получаем эксперимент
-    experiment = await db.experiments.find_one(
-                            {"_id": ObjectId(experiment_id)}
-                            )
+    current_profile = experiment["settings"]["load_profiles"][experiment["current_profile_index"]]
+    results = experiment.get("results", [])
+    
+    if not results:
+        return ExperimentStats(
+            experiment_id=experiment_id,
+            current_users=current_profile.users,
+            current_interval=current_profile.interval_seconds,
+            current_profile_index=experiment["current_profile_index"],
+            total_profiles=len(experiment["settings"]["load_profiles"]),
+            average_latency=0,
+            requests_count=0,
+            success_rate=0
+        )
+
+    latencies = [r.get("latency_ms", 0) for r in results]
+    success_count = sum(1 for r in results if r.get("status_code", 0) == 200)
+    
+    return ExperimentStats(
+        experiment_id=experiment_id,
+        current_users=current_profile.users,
+        current_interval=current_profile.interval_seconds,
+        current_profile_index=experiment["current_profile_index"],
+        total_profiles=len(experiment["settings"]["load_profiles"]),
+        average_latency=sum(latencies) / len(latencies),
+        requests_count=len(results),
+        success_rate=success_count / len(results)
+    )
+
+
+async def run_experiment(experiment_id: str):
+    """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
+    db = await get_database()
+    experiment = await db.experiments.find_one({"_id": ObjectId(experiment_id)})
+    
     if not experiment:
         return
 
     host = experiment["settings"]["host"]
     port = experiment["settings"]["port"]
-    interval = experiment["settings"]["interval"]
-    count = experiment["settings"]["count"]
-    clients = experiment["settings"]["clients"]
+    load_profiles = experiment["settings"]["load_profiles"]
 
-    async def client_task():
-        completed = 0
-        while completed < count:
-            current_exp = await db.experiments.find_one(
-                                    {"_id": ObjectId(experiment_id)})
-            if not current_exp or current_exp["state"] != "running":
-                break
-            result = await measure_latency(host, port)
+    while experiment["state"] == ExperimentState.RUNNING:
+        current_profile = load_profiles[experiment["current_profile_index"]]
+        
+        # Создаем задачи для каждого пользователя
+        tasks = []
+        for _ in range(current_profile.users):
+            task = asyncio.create_task(measure_latency(host, port))
+            tasks.append(task)
+        
+        # Ждем завершения всех запросов
+        results = await asyncio.gather(*tasks)
+        
+        # Сохраняем результаты
+        for result in results:
             result_dict = result.dict() if hasattr(result, 'dict') else {
                 "status_code": result.status_code,
                 "latency_ms": result.latency_ms,
-                "timestamp": result.timestamp
+                "timestamp": result.timestamp,
+                "error": getattr(result, 'error', None)
             }
             await db.experiments.update_one(
                 {"_id": ObjectId(experiment_id)},
@@ -217,23 +261,31 @@ async def run_experiment(experiment_id: str):
                     "$set": {"updated_at": datetime.now()}
                 }
             )
-            completed += 1
-            if completed >= count:
-                await db.experiments.update_one(
-                    {"_id": ObjectId(experiment_id)},
-                    {
-                        "$set":
-                            {
-                                "state": "completed",
-                                "updated_at": datetime.now()
-                            }
+        
+        # Ждем указанный интервал
+        await asyncio.sleep(current_profile.interval_seconds)
+        
+        # Проверяем, нужно ли перейти к следующему профилю
+        if experiment["current_profile_index"] < len(load_profiles) - 1:
+            await db.experiments.update_one(
+                {"_id": ObjectId(experiment_id)},
+                {
+                    "$inc": {"current_profile_index": 1},
+                    "$set": {"updated_at": datetime.now()}
+                }
+            )
+            experiment["current_profile_index"] += 1
+        else:
+            await db.experiments.update_one(
+                {"_id": ObjectId(experiment_id)},
+                {
+                    "$set": {
+                        "state": ExperimentState.COMPLETED,
+                        "updated_at": datetime.now()
                     }
-                )
-                break
-            await asyncio.sleep(interval)
-
-    tasks = [asyncio.create_task(client_task()) for _ in range(clients)]
-    await asyncio.gather(*tasks)
+                }
+            )
+            break
 
 
 @router.post("/run_experiments_queue")
@@ -287,3 +339,171 @@ async def run_experiments_sequentially(experiment_ids: List[str], db):
             {"_id": ObjectId(experiment_id)},
             {"$set": {"state": "completed", "updated_at": datetime.now()}}
         )
+
+
+@router.post("/create_experiment_group")
+async def create_experiment_group(
+    name: str,
+    experiments: List[Experiment],
+    db=Depends(get_database)
+):
+    """Создает новую группу экспериментов."""
+    group = ExperimentGroup(name=name)
+    
+    # Добавляем эксперименты в группу
+    for experiment in experiments:
+        if experiment.id in group.experiments:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Duplicate experiment ID: {experiment.id}"
+            )
+        group.experiments[experiment.id] = experiment
+
+    # Преобразуем в словарь для MongoDB
+    group_dict = group.dict(exclude={"id"})
+
+    # Вставляем в базу данных
+    result = await db.experiment_groups.insert_one(group_dict)
+    group_id = str(result.inserted_id)
+
+    return {"group_id": group_id}
+
+
+@router.get("/group_stats")
+async def get_group_stats(group_id: str, db=Depends(get_database)):
+    """Получает статистику по группе экспериментов."""
+    group = await db.experiment_groups.find_one({"_id": ObjectId(group_id)})
+    if not group:
+        raise HTTPException(status_code=404, detail="Group not found")
+
+    # Получаем статистику по каждому эксперименту
+    experiments_stats = {}
+    total_requests = 0
+    total_latency = 0
+    total_success = 0
+
+    for experiment_id, experiment in group["experiments"].items():
+        stats = await get_experiment_stats(experiment["id"], db)
+        experiments_stats[experiment_id] = stats
+        
+        # Обновляем общую статистику
+        total_requests += stats.requests_count
+        total_latency += stats.average_latency * stats.requests_count
+        total_success += stats.success_rate * stats.requests_count
+
+    # Рассчитываем средние значения
+    avg_latency = total_latency / total_requests if total_requests > 0 else 0
+    success_rate = total_success / total_requests if total_requests > 0 else 0
+
+    return GroupStats(
+        group_id=group_id,
+        state=group["state"],
+        experiments_stats=experiments_stats,
+        total_requests=total_requests,
+        average_latency=avg_latency,
+        success_rate=success_rate
+    )
+
+
+@router.post("/manage_group")
+async def manage_group(
+    state: str,
+    group_id: str,
+    db=Depends(get_database)
+):
+    """Управляет состоянием группы экспериментов."""
+    if state not in ["start", "pause", "stop"]:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid state. Use 'start', 'pause' or 'stop'"
+        )
+
+    group = await db.experiment_groups.find_one({"_id": ObjectId(group_id)})
+    if not group:
+        raise HTTPException(status_code=404, detail="Group not found")
+
+    new_state = ExperimentState.RUNNING if state == "start" else \
+                ExperimentState.PAUSED if state == "pause" else \
+                ExperimentState.COMPLETED
+
+    # Обновляем состояние группы
+    await db.experiment_groups.update_one(
+        {"_id": ObjectId(group_id)},
+        {
+            "$set": {
+                "state": new_state,
+                "updated_at": datetime.now()
+            }
+        }
+    )
+
+    # Если запускаем группу, запускаем все эксперименты
+    if state == "start":
+        for experiment in group["experiments"].values():
+            await manage_experiment("start", experiment["id"], db)
+    # Если останавливаем группу, останавливаем все эксперименты
+    elif state == "stop":
+        for experiment in group["experiments"].values():
+            await manage_experiment("stop", experiment["id"], db)
+
+    return {"group_id": group_id, "state": new_state}
+
+
+@router.post("/add_experiment_to_group")
+async def add_experiment_to_group(
+    group_id: str,
+    experiment: Experiment,
+    db=Depends(get_database)
+):
+    """Добавляет новый эксперимент в существующую группу."""
+    group = await db.experiment_groups.find_one({"_id": ObjectId(group_id)})
+    if not group:
+        raise HTTPException(status_code=404, detail="Group not found")
+
+    if experiment.id in group["experiments"]:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Experiment with ID {experiment.id} already exists in group"
+        )
+
+    # Добавляем эксперимент в группу
+    await db.experiment_groups.update_one(
+        {"_id": ObjectId(group_id)},
+        {
+            "$set": {
+                f"experiments.{experiment.id}": experiment.dict(exclude={"id"}),
+                "updated_at": datetime.now()
+            }
+        }
+    )
+
+    return {"group_id": group_id, "experiment_id": experiment.id}
+
+
+@router.delete("/remove_experiment_from_group")
+async def remove_experiment_from_group(
+    group_id: str,
+    experiment_id: str,
+    db=Depends(get_database)
+):
+    """Удаляет эксперимент из группы."""
+    group = await db.experiment_groups.find_one({"_id": ObjectId(group_id)})
+    if not group:
+        raise HTTPException(status_code=404, detail="Group not found")
+
+    if experiment_id not in group["experiments"]:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Experiment with ID {experiment_id} not found in group"
+        )
+
+    # Удаляем эксперимент из группы
+    await db.experiment_groups.update_one(
+        {"_id": ObjectId(group_id)},
+        {
+            "$unset": {f"experiments.{experiment_id}": ""},
+            "$set": {"updated_at": datetime.now()}
+        }
+    )
+
+    return {"group_id": group_id, "experiment_id": experiment_id}
