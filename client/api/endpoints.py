@@ -105,13 +105,20 @@ async def result_experiment(experiment_id: str, db=Depends(get_database)):
 
 @router.get("/list_experiments")
 async def list_experiments(db=Depends(get_database)):
+    """Получает список всех экспериментов."""
     experiments = []
-    async for exp in db.experiments.find():
+    async for experiment in db.experiments.find():
         # Преобразуем документ MongoDB в JSON-сериализуемый формат
-        exp = parse_mongo_doc(exp)
-        exp["id"] = str(exp["_id"])
-        del exp["_id"]
-        experiments.append(exp)
+        experiment = parse_mongo_doc(experiment)
+        experiment["id"] = str(experiment["_id"])
+        del experiment["_id"]
+        
+        # Удаляем полные результаты, оставляем только их количество
+        if "results" in experiment:
+            experiment["results_count"] = len(experiment["results"])
+            del experiment["results"]
+        
+        experiments.append(experiment)
     return experiments
 
 
@@ -144,13 +151,13 @@ async def manage_experiment(state: str,
     new_state = ""
 
     if state == "start":
-        new_state = "running"
+        new_state = ExperimentState.RUNNING
         # Запускаем задачу в фоновом режиме
         asyncio.create_task(run_experiment(experiment_id))
     elif state == "pause":
-        new_state = "paused"
+        new_state = ExperimentState.PAUSED
     elif state == "stop":
-        new_state = "completed"
+        new_state = ExperimentState.COMPLETED
 
     # Обновляем состояние в базе данных
     await db.experiments.update_one(
@@ -330,59 +337,6 @@ async def run_experiment(experiment_id: str):
             )
             print(f"Experiment {experiment_id} completed")
             break
-
-
-@router.post("/run_experiments_queue")
-async def run_experiments_queue(
-            experiment_ids: List[str],
-            db=Depends(get_database)):
-    """
-    Запускает эксперименты в порядке, указанном в experiment_ids.
-    """
-    if not experiment_ids:
-        raise HTTPException(
-            status_code=400,
-            detail="No experiment IDs provided")
-
-    # Проверяем, существуют ли все переданные эксперименты
-    existing_experiments = await db.experiments.find(
-        {"_id": {"$in": [ObjectId(eid) for eid in experiment_ids]}}
-    ).to_list(length=None)
-
-    existing_ids = {str(exp["_id"]) for exp in existing_experiments}
-    not_found_ids = [eid for eid in experiment_ids if eid not in existing_ids]
-
-    if not_found_ids:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Experiments not found: {not_found_ids}")
-
-    # Запускаем выполнение в фоне
-    asyncio.create_task(run_experiments_sequentially(experiment_ids, db))
-
-    return {
-        "message": "Experiments queue started",
-        "experiment_ids": experiment_ids
-        }
-
-
-async def run_experiments_sequentially(experiment_ids: List[str], db):
-    """Выполняет эксперименты последовательно, в заданном порядке."""
-    for experiment_id in experiment_ids:
-        # Обновляем статус перед запуском
-        await db.experiments.update_one(
-            {"_id": ObjectId(experiment_id)},
-            {"$set": {"state": "running"}}
-        )
-
-        # Запускаем эксперимент
-        await run_experiment(experiment_id)
-
-        # Обновляем статус после завершения
-        await db.experiments.update_one(
-            {"_id": ObjectId(experiment_id)},
-            {"$set": {"state": "completed"}}
-        )
 
 
 @router.post("/create_experiment_group")
