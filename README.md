@@ -1,12 +1,27 @@
 # lwmecps-app
 
+## Быстрый старт
+
+Для запуска приложения выполните:
+
+```bash
+docker-compose up -d --build
+```
+
+Это создаст и запустит все необходимые контейнеры (API, MongoDB) в фоновом режиме.
+
+После запуска сервисы будут доступны по следующим адресам:
+- API: http://localhost:8001
+- Swagger UI: http://localhost:8001/docs
+- MongoDB: mongodb://localhost:27017
+
 ## Описание
 
 Данный сервис представляет собой API на основе FastAPI, предназначенный для проведения экспериментов по измерению задержки (latency) удаленных серверов. Сервис позволяет создавать, управлять и анализировать эксперименты по тестированию производительности API.
 
 ## Возможности
 
-- Создание экспериментов с заданными параметрами (хост, порт, интервал, количество проверок)
+- Создание экспериментов с заданными параметрами (хост, порт, профили нагрузки)
 - Создание групп экспериментов для параллельного тестирования нескольких серверов
 - Управление состоянием экспериментов и групп (запуск, пауза, остановка)
 - Измерение задержки удаленных API-эндпоинтов
@@ -17,7 +32,8 @@
 
 ## Требования
 
-- Python 3.6+
+- Docker и Docker Compose
+- Python 3.6+ (для локальной разработки)
 - FastAPI
 - httpx
 - MongoDB
@@ -58,7 +74,7 @@
 
 **Возвращает:**
 
-- Массив объектов экспериментов
+- Массив объектов экспериментов (без полных результатов, только основная информация)
 
 #### POST `/create_experiment`
 
@@ -67,9 +83,10 @@
 **Параметры:**
 
 - `name` - имя эксперимента
-- `host` - хост для тестирования
-- `port` - порт для тестирования
-- `load_profiles` - список профилей нагрузки
+- `settings` - настройки эксперимента:
+  - `host` - хост для тестирования
+  - `port` - порт для тестирования
+  - `load_profiles` - список профилей нагрузки
 
 **Возвращает:**
 
@@ -95,11 +112,24 @@
 **Параметры:**
 
 - `name` - имя группы
-- `experiments` - список экспериментов
+- `experiment_ids` - список ID экспериментов
 
 **Возвращает:**
 
 - Идентификатор созданной группы
+
+#### POST `/add_experiments_to_group`
+
+Добавляет один или несколько экспериментов в существующую группу.
+
+**Параметры:**
+
+- `group_id` - идентификатор группы
+- `experiment_ids` - список ID экспериментов для добавления
+
+**Возвращает:**
+
+- Идентификатор группы и список добавленных экспериментов
 
 #### GET `/group_stats`
 
@@ -111,7 +141,23 @@
 
 **Возвращает:**
 
-- Объект `GroupStats` со статистикой по всем экспериментам в группе
+- Объект `GroupStats` с информацией о группе и статистикой по каждому эксперименту
+
+#### GET `/list_groups`
+
+Получает список всех групп экспериментов.
+
+**Возвращает:**
+
+- Массив объектов групп
+
+#### POST `/delete_groups`
+
+Удаляет все группы экспериментов.
+
+**Возвращает:**
+
+- Сообщение об успешном удалении
 
 #### POST `/manage_group`
 
@@ -119,206 +165,109 @@
 
 **Параметры:**
 
+- `group_id` - идентификатор группы
 - `state` - состояние группы ("start", "pause", "stop")
-- `group_id` - идентификатор группы
 
 **Возвращает:**
 
-- Идентификатор группы и её новое состояние
-
-#### POST `/add_experiment_to_group`
-
-Добавляет эксперимент в существующую группу.
-
-**Параметры:**
-
-- `group_id` - идентификатор группы
-- `experiment` - объект эксперимента
-
-**Возвращает:**
-
-- Идентификатор группы и добавленного эксперимента
-
-#### DELETE `/remove_experiment_from_group`
-
-Удаляет эксперимент из группы.
-
-**Параметры:**
-
-- `group_id` - идентификатор группы
-- `experiment_id` - идентификатор эксперимента
-
-**Возвращает:**
-
-- Идентификатор группы и удаленного эксперимента
-
-## Модели данных
-
-### LoadProfile
-
-- `users` - количество пользователей
-- `duration_seconds` - длительность в секундах
-- `interval_seconds` - интервал между запросами в секундах
-
-### ExperimentSettings
-
-- `host` - хост для тестирования
-- `port` - порт для тестирования
-- `load_profiles` - список профилей нагрузки
-
-### ExperimentResult
-
-- `status_code` - HTTP-статус код ответа
-- `latency_ms` - время задержки в миллисекундах
-- `timestamp` - временная метка
-- `error` - опциональное сообщение об ошибке
-
-### Experiment
-
-- `id` - уникальный идентификатор эксперимента
-- `name` - имя эксперимента
-- `settings` - настройки эксперимента
-- `current_profile_index` - индекс текущего профиля нагрузки
-- `state` - состояние эксперимента
-- `created_at` - дата и время создания
-- `updated_at` - дата и время последнего обновления
-- `results` - массив результатов
-
-### ExperimentGroup
-
-- `id` - уникальный идентификатор группы
-- `name` - имя группы
-- `experiments` - словарь экспериментов (ID -> Experiment)
-- `state` - состояние группы
-- `created_at` - дата и время создания
-- `updated_at` - дата и время последнего обновления
-
-### GroupStats
-
-- `group_id` - идентификатор группы
-- `state` - состояние группы
-- `experiments_stats` - словарь статистики по экспериментам
-- `total_requests` - общее количество запросов
-- `average_latency` - средняя задержка
-- `success_rate` - процент успешных запросов
-- `timestamp` - временная метка
+- Идентификатор группы и ее новое состояние
 
 ## Примеры использования
 
-### Создание простого эксперимента
+### Создание эксперимента
 
 ```python
-# Создание профиля нагрузки
-load_profile = {
-    "users": 100,
-    "duration_seconds": 60,
-    "interval_seconds": 1.0
-}
+import requests
 
 # Создание эксперимента
-experiment = {
-    "name": "test_experiment",
-    "host": "example.com",
-    "port": 8000,
-    "load_profiles": [load_profile]
+experiment_data = {
+    "name": "Тестовый эксперимент",
+    "settings": {
+        "host": "example.com",
+        "port": 80,
+        "load_profiles": [
+            {
+                "concurrent_users": 10,
+                "request_interval": 1.0,
+                "profile_duration": 60.0
+            },
+            {
+                "concurrent_users": 20,
+                "request_interval": 0.5,
+                "profile_duration": 30.0
+            }
+        ]
+    }
 }
 
-# Отправка запроса
-response = await client.post("/create_experiment", json=experiment)
+response = requests.post("http://localhost:8001/api/create_experiment", json=experiment_data)
 experiment_id = response.json()["experiment_id"]
 ```
 
 ### Создание группы экспериментов
 
 ```python
-# Создание профилей нагрузки
-load_profiles = [
-    {
-        "users": 100,
-        "duration_seconds": 60,
-        "interval_seconds": 1.0
-    },
-    {
-        "users": 80,
-        "duration_seconds": 60,
-        "interval_seconds": 1.0
-    },
-    {
-        "users": 30,
-        "duration_seconds": 60,
-        "interval_seconds": 1.0
-    }
-]
-
-# Создание экспериментов для разных серверов
-experiments = [
-    {
-        "name": "server1_test",
-        "host": "server1.example.com",
-        "port": 8000,
-        "load_profiles": load_profiles
-    },
-    {
-        "name": "server2_test",
-        "host": "server2.example.com",
-        "port": 8000,
-        "load_profiles": load_profiles
-    }
-]
-
 # Создание группы
-group = {
-    "name": "test_group",
-    "experiments": experiments
+group_data = {
+    "name": "Тестовая группа",
+    "experiment_ids": [experiment_id]
 }
 
-# Отправка запроса
-response = await client.post("/create_experiment_group", json=group)
+response = requests.post("http://localhost:8001/api/create_experiment_group", json=group_data)
 group_id = response.json()["group_id"]
-```
 
-### Управление группой экспериментов
-
-```python
-# Запуск всех экспериментов в группе
-await client.post(f"/manage_group?state=start&group_id={group_id}")
+# Запуск группы
+response = requests.post(
+    "http://localhost:8001/api/manage_group",
+    params={"group_id": group_id, "state": "start"}
+)
 
 # Получение статистики
-stats = await client.get(f"/group_stats?group_id={group_id}")
-print(f"Average latency: {stats.average_latency}ms")
-print(f"Success rate: {stats.success_rate}%")
-
-# Пауза группы
-await client.post(f"/manage_group?state=pause&group_id={group_id}")
-
-# Остановка группы
-await client.post(f"/manage_group?state=stop&group_id={group_id}")
+response = requests.get(f"http://localhost:8001/api/group_stats?group_id={group_id}")
+stats = response.json()
 ```
 
-### Добавление нового эксперимента в группу
+## Модели данных
+
+### Experiment
 
 ```python
-# Создание нового эксперимента
-new_experiment = {
-    "name": "server3_test",
-    "host": "server3.example.com",
-    "port": 8000,
-    "load_profiles": load_profiles
-}
-
-# Добавление в группу
-await client.post(f"/add_experiment_to_group?group_id={group_id}", json=new_experiment)
+class Experiment:
+    id: Optional[str]
+    name: str
+    settings: ExperimentSettings
+    state: ExperimentState
+    current_profile_index: int
+    results: List[ExperimentResult]
+    created_at: datetime
+    updated_at: datetime
 ```
 
-## Особенности реализации
+### ExperimentGroup
 
-- Асинхронное выполнение запросов через httpx
-- Фоновое выполнение экспериментов с использованием asyncio.create_task
-- Сериализация ObjectId и datetime для корректного представления в JSON
-- Обработка исключений при невалидных запросах
-- Поддержка динамической нагрузки через профили
-- Возможность параллельного тестирования нескольких серверов
+```python
+class ExperimentGroup:
+    id: Optional[str]
+    name: str
+    experiment_ids: List[str]
+    state: ExperimentState
+    created_at: datetime
+    updated_at: datetime
+```
 
-## Работа с базой данных
+### LoadProfile
 
-Сервис использует MongoDB для хранения экспериментов, групп и их результатов. Для работы с ObjectId используется кастомный JSON encoder.
+```python
+class LoadProfile:
+    concurrent_users: int
+    request_interval: float
+    profile_duration: float
+```
+
+## Состояния экспериментов и групп
+
+- `pending` - ожидает запуска
+- `running` - выполняется
+- `paused` - приостановлен
+- `completed` - завершен
+- `failed` - завершился с ошибкой
