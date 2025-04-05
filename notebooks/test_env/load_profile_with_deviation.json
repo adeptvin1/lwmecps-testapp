@@ -1,0 +1,8642 @@
+[
+    {
+        "timestamp": 0,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 10,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 20,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 30,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 40,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 50,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 60,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 70,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 80,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 90,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 100,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 110,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 120,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 130,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 140,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 150,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 160,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 170,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 180,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 190,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 200,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 210,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 220,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 230,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 240,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 250,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 260,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 270,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 280,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 290,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 300,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 310,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 320,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 330,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 340,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 350,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 360,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 370,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 380,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 390,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 400,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 410,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 420,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 430,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 440,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 450,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 460,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 470,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 480,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 490,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 500,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 510,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 520,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 530,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 540,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 550,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 560,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 570,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 580,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 590,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 600,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 610,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 620,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 630,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 640,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 650,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 660,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 670,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 680,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 690,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 700,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 710,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 720,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 730,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 740,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 750,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 760,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 770,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 780,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 790,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 800,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 810,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 820,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 830,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 840,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 850,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 860,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 870,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 880,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 890,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 900,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 910,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 920,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 930,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 940,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 950,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 960,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 970,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 980,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 990,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1000,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1010,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 1020,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 1030,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 1040,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1050,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 1060,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1070,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1080,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1090,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 1100,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 1110,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1120,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 1130,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 1140,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1150,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1160,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 1170,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1180,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1190,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1200,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1210,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1220,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 1230,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 1240,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 1250,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 1260,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 1270,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1280,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1290,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 1300,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1310,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 1320,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1330,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1340,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1350,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 1360,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1370,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1380,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1390,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 1400,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 1410,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 1420,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1430,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1440,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 1450,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1460,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1470,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1480,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1490,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 1500,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1510,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 1520,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 1530,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1540,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 1550,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 1560,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 1570,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1580,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 1590,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 1600,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1610,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 1620,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 1630,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 1640,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 1650,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1660,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 1670,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 1680,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1690,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1700,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1710,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1720,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 1730,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1740,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 1750,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 1760,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 1770,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1780,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 1790,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1800,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1810,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1820,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 1830,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 1840,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1850,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1860,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 1870,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 1880,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 1890,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 1900,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1910,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1920,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1930,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 1940,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1950,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 1960,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 1970,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 1980,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 1990,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 2000,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2010,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 2020,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 2030,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2040,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2050,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 2060,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2070,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 2080,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2090,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2100,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2110,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2120,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2130,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2140,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 2150,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2160,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2170,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2180,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 2190,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2200,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2210,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 2220,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 2230,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2240,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 2250,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2260,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 2270,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2280,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2290,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2300,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2310,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2320,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2330,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 2340,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2350,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 2360,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2370,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2380,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2390,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2400,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 2410,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2420,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2430,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2440,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2450,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2460,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2470,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2480,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2490,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2500,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 2510,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2520,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2530,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 2540,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2550,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2560,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 2570,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2580,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 2590,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2600,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2610,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2620,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2630,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 2640,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2650,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2660,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2670,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 2680,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2690,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2700,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 2710,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2720,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 2730,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 2740,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2750,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2760,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2770,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 2780,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 2790,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 2800,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2810,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 2820,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 2830,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 2840,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 2850,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2860,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2870,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 2880,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2890,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 2900,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 2910,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 2920,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 2930,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 2940,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 2950,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 2960,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2970,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 2980,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 2990,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 3000,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3010,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3020,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 3030,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3040,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 3050,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 3060,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3070,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3080,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 3090,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 3100,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 3110,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 3120,
+        "ue_count": 82
+    },
+    {
+        "timestamp": 3130,
+        "ue_count": 84
+    },
+    {
+        "timestamp": 3140,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 3150,
+        "ue_count": 81
+    },
+    {
+        "timestamp": 3160,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 3170,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3180,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 3190,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3200,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 3210,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 3220,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3230,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3240,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 3250,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3260,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 3270,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3280,
+        "ue_count": 94
+    },
+    {
+        "timestamp": 3290,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3300,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 3310,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 3320,
+        "ue_count": 92
+    },
+    {
+        "timestamp": 3330,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3340,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 3350,
+        "ue_count": 80
+    },
+    {
+        "timestamp": 3360,
+        "ue_count": 87
+    },
+    {
+        "timestamp": 3370,
+        "ue_count": 95
+    },
+    {
+        "timestamp": 3380,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3390,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 3400,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3410,
+        "ue_count": 86
+    },
+    {
+        "timestamp": 3420,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3430,
+        "ue_count": 88
+    },
+    {
+        "timestamp": 3440,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 3450,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3460,
+        "ue_count": 91
+    },
+    {
+        "timestamp": 3470,
+        "ue_count": 93
+    },
+    {
+        "timestamp": 3480,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 3490,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3500,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3510,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 3520,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3530,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3540,
+        "ue_count": 89
+    },
+    {
+        "timestamp": 3550,
+        "ue_count": 90
+    },
+    {
+        "timestamp": 3560,
+        "ue_count": 96
+    },
+    {
+        "timestamp": 3570,
+        "ue_count": 83
+    },
+    {
+        "timestamp": 3580,
+        "ue_count": 97
+    },
+    {
+        "timestamp": 3590,
+        "ue_count": 85
+    },
+    {
+        "timestamp": 3600,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3610,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 3620,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 3630,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3640,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 3650,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 3660,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 3670,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3680,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 3690,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 3700,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 3710,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 3720,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3730,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 3740,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 3750,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 3760,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 3770,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 3780,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 3790,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 3800,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 3810,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 3820,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 3830,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 3840,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 3850,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 3860,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3870,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 3880,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 3890,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 3900,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 3910,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 3920,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 3930,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 3940,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 3950,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 3960,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 3970,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 3980,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 3990,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 4000,
+        "ue_count": 79
+    },
+    {
+        "timestamp": 4010,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4020,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4030,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4040,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4050,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4060,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4070,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4080,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4090,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4100,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4110,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4120,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4130,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4140,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4150,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4160,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 4170,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4180,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4190,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4200,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4210,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4220,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4230,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4240,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4250,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4260,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 4270,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4280,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4290,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4300,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4310,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4320,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4330,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4340,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 4350,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4360,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4370,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4380,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4390,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4400,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 4410,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4420,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 4430,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4440,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4450,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4460,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4470,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4480,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4490,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4500,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4510,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4520,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4530,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4540,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4550,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4560,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 4570,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4580,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4590,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4600,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4610,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4620,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 4630,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4640,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4650,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4660,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4670,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 4680,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4690,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 4700,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4710,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 4720,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4730,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 4740,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4750,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4760,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4770,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4780,
+        "ue_count": 79
+    },
+    {
+        "timestamp": 4790,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 4800,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4810,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4820,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4830,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4840,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 4850,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 4860,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 4870,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4880,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 4890,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4900,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4910,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4920,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 4930,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4940,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 4950,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 4960,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 4970,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 4980,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 4990,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5000,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5010,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5020,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5030,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 5040,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5050,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5060,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5070,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 5080,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5090,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5100,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5110,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5120,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 5130,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5140,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5150,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5160,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5170,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5180,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5190,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5200,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5210,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5220,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5230,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5240,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5250,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5260,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5270,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5280,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5290,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5300,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5310,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5320,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5330,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5340,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5350,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5360,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5370,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5380,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5390,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5400,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5410,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5420,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5430,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5440,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5450,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 5460,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5470,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5480,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5490,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5500,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5510,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5520,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5530,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5540,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5550,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 5560,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5570,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5580,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5590,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5600,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5610,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5620,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 5630,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5640,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5650,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5660,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 5670,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5680,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5690,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5700,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 5710,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 5720,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5730,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 5740,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5750,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5760,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5770,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 5780,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 5790,
+        "ue_count": 79
+    },
+    {
+        "timestamp": 5800,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5810,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 5820,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5830,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 5840,
+        "ue_count": 79
+    },
+    {
+        "timestamp": 5850,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5860,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5870,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5880,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5890,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 5900,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 5910,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5920,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 5930,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 5940,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 5950,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 5960,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 5970,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 5980,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 5990,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6000,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6010,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6020,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6030,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6040,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6050,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6060,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 6070,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6080,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6090,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6100,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6110,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6120,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 6130,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6140,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 6150,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 6160,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6170,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6180,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6190,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6200,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6210,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6220,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6230,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6240,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6250,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6260,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6270,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 6280,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6290,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6300,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 6310,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6320,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 6330,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6340,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6350,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6360,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6370,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6380,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6390,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6400,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6410,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6420,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6430,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6440,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6450,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 6460,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6470,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6480,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6490,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6500,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6510,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6520,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 6530,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6540,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6550,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6560,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6570,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6580,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6590,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6600,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6610,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6620,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6630,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6640,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 6650,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6660,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 6670,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6680,
+        "ue_count": 69
+    },
+    {
+        "timestamp": 6690,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6700,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6710,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6720,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6730,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6740,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6750,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 6760,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 6770,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6780,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6790,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6800,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 6810,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6820,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 6830,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6840,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 6850,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6860,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 6870,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6880,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 6890,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 6900,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6910,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 6920,
+        "ue_count": 72
+    },
+    {
+        "timestamp": 6930,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6940,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 6950,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 6960,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 6970,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6980,
+        "ue_count": 74
+    },
+    {
+        "timestamp": 6990,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 7000,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 7010,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 7020,
+        "ue_count": 73
+    },
+    {
+        "timestamp": 7030,
+        "ue_count": 78
+    },
+    {
+        "timestamp": 7040,
+        "ue_count": 64
+    },
+    {
+        "timestamp": 7050,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 7060,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 7070,
+        "ue_count": 68
+    },
+    {
+        "timestamp": 7080,
+        "ue_count": 65
+    },
+    {
+        "timestamp": 7090,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 7100,
+        "ue_count": 77
+    },
+    {
+        "timestamp": 7110,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 7120,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 7130,
+        "ue_count": 67
+    },
+    {
+        "timestamp": 7140,
+        "ue_count": 75
+    },
+    {
+        "timestamp": 7150,
+        "ue_count": 76
+    },
+    {
+        "timestamp": 7160,
+        "ue_count": 66
+    },
+    {
+        "timestamp": 7170,
+        "ue_count": 79
+    },
+    {
+        "timestamp": 7180,
+        "ue_count": 71
+    },
+    {
+        "timestamp": 7190,
+        "ue_count": 70
+    },
+    {
+        "timestamp": 7200,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 7210,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 7220,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7230,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7240,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 7250,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7260,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7270,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7280,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 7290,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7300,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7310,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7320,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7330,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7340,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7350,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7360,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7370,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7380,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7390,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 7400,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 7410,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 7420,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7430,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7440,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7450,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7460,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7470,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7480,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7490,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 7500,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7510,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7520,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 7530,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7540,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7550,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7560,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 7570,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7580,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7590,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 7600,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 7610,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7620,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7630,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7640,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7650,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7660,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7670,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7680,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7690,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7700,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 7710,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7720,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7730,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 7740,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7750,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7760,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7770,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7780,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 7790,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7800,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7810,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7820,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 7830,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 7840,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7850,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7860,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7870,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 7880,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 7890,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7900,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7910,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 7920,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 7930,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7940,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 7950,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 7960,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 7970,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 7980,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 7990,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8000,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8010,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8020,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8030,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8040,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8050,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8060,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8070,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8080,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8090,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8100,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8110,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8120,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8130,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8140,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8150,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8160,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8170,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8180,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8190,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8200,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8210,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8220,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8230,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8240,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8250,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8260,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8270,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8280,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8290,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8300,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8310,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 8320,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8330,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 8340,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8350,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8360,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8370,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8380,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8390,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8400,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8410,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8420,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8430,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8440,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8450,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8460,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8470,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8480,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8490,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8500,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8510,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8520,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8530,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8540,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8550,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8560,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8570,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8580,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8590,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8600,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8610,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 8620,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8630,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8640,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8650,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8660,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 8670,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8680,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8690,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8700,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8710,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8720,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8730,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8740,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 8750,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 8760,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8770,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 8780,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8790,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8800,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8810,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8820,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8830,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8840,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 8850,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8860,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8870,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8880,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8890,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 8900,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8910,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 8920,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 8930,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 8940,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 8950,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 8960,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8970,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 8980,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 8990,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9000,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9010,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9020,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9030,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9040,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9050,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9060,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9070,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9080,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9090,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 9100,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9110,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 9120,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 9130,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9140,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9150,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9160,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9170,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9180,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9190,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 9200,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9210,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9220,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9230,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 9240,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9250,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9260,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 9270,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9280,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9290,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9300,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9310,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9320,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9330,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9340,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9350,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9360,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9370,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 9380,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9390,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9400,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9410,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9420,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9430,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9440,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9450,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9460,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9470,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9480,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9490,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9500,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9510,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 9520,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 9530,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9540,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9550,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9560,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9570,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9580,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9590,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9600,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9610,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9620,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9630,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9640,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9650,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9660,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9670,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9680,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9690,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9700,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 9710,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9720,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9730,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 9740,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9750,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 9760,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9770,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 9780,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9790,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9800,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9810,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9820,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 9830,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9840,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 9850,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9860,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9870,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 9880,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 9890,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9900,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9910,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9920,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 9930,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9940,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 9950,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 9960,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 9970,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 9980,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 9990,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10000,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10010,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10020,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10030,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10040,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10050,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10060,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10070,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10080,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10090,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10100,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10110,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10120,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10130,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10140,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 10150,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10160,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10170,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10180,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10190,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10200,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10210,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10220,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 10230,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10240,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10250,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10260,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10270,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10280,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10290,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10300,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10310,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10320,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10330,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 10340,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10350,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10360,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10370,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10380,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 10390,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10400,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10410,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10420,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 10430,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10440,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 10450,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10460,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10470,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10480,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 10490,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10500,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10510,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10520,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10530,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10540,
+        "ue_count": 55
+    },
+    {
+        "timestamp": 10550,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10560,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10570,
+        "ue_count": 54
+    },
+    {
+        "timestamp": 10580,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10590,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10600,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10610,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10620,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10630,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10640,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10650,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 10660,
+        "ue_count": 56
+    },
+    {
+        "timestamp": 10670,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10680,
+        "ue_count": 57
+    },
+    {
+        "timestamp": 10690,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10700,
+        "ue_count": 61
+    },
+    {
+        "timestamp": 10710,
+        "ue_count": 53
+    },
+    {
+        "timestamp": 10720,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10730,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10740,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10750,
+        "ue_count": 59
+    },
+    {
+        "timestamp": 10760,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10770,
+        "ue_count": 58
+    },
+    {
+        "timestamp": 10780,
+        "ue_count": 60
+    },
+    {
+        "timestamp": 10790,
+        "ue_count": 52
+    },
+    {
+        "timestamp": 10800,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 10810,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 10820,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 10830,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10840,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 10850,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 10860,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 10870,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 10880,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 10890,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 10900,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 10910,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 10920,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10930,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 10940,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 10950,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 10960,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 10970,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 10980,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 10990,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11000,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11010,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11020,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11030,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11040,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11050,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11060,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11070,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11080,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11090,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11100,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11110,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11120,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11130,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11140,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11150,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11160,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11170,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11180,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11190,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11200,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11210,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11220,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11230,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11240,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11250,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11260,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11270,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11280,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11290,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11300,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11310,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11320,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11330,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11340,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11350,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11360,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11370,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11380,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11390,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11400,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11410,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11420,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11430,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11440,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11450,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11460,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11470,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11480,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11490,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11500,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11510,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11520,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11530,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11540,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11550,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11560,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11570,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11580,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11590,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11600,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11610,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11620,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11630,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11640,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11650,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11660,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11670,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11680,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11690,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11700,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11710,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11720,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11730,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11740,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11750,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11760,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11770,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11780,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11790,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11800,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11810,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 11820,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11830,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11840,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11850,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 11860,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11870,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11880,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 11890,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 11900,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11910,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11920,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 11930,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 11940,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 11950,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11960,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 11970,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 11980,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 11990,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12000,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12010,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12020,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12030,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12040,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12050,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12060,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12070,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12080,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12090,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12100,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12110,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12120,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12130,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12140,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12150,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12160,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12170,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12180,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12190,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12200,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12210,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12220,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12230,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12240,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12250,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12260,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12270,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12280,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12290,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12300,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12310,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12320,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12330,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12340,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12350,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12360,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12370,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12380,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12390,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12400,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12410,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12420,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12430,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12440,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12450,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12460,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12470,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12480,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12490,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12500,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12510,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12520,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12530,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12540,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12550,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12560,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12570,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12580,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12590,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12600,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12610,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12620,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12630,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12640,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12650,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12660,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12670,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12680,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12690,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12700,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12710,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12720,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12730,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12740,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 12750,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12760,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12770,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12780,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12790,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12800,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12810,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12820,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12830,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12840,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12850,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12860,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12870,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12880,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12890,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 12900,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 12910,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 12920,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 12930,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 12940,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 12950,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 12960,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 12970,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12980,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 12990,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13000,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13010,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13020,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13030,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13040,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13050,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13060,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13070,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13080,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13090,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13100,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13110,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13120,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13130,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13140,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13150,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13160,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13170,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13180,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13190,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13200,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13210,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13220,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13230,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13240,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13250,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13260,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13270,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13280,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13290,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13300,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13310,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13320,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13330,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13340,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13350,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13360,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13370,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13380,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13390,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13400,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13410,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13420,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13430,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13440,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13450,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13460,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13470,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13480,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13490,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13500,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13510,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13520,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13530,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13540,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13550,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13560,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13570,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13580,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13590,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13600,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13610,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13620,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13630,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13640,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13650,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13660,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13670,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13680,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13690,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13700,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13710,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13720,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13730,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13740,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13750,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13760,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13770,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13780,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13790,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13800,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13810,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 13820,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 13830,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13840,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13850,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 13860,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13870,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13880,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 13890,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 13900,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13910,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13920,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13930,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 13940,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13950,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 13960,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 13970,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 13980,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 13990,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 14000,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 14010,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 14020,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14030,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 14040,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 14050,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 14060,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 14070,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 14080,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 14090,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 14100,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 14110,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 14120,
+        "ue_count": 43
+    },
+    {
+        "timestamp": 14130,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 14140,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14150,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 14160,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 14170,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 14180,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 14190,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 14200,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14210,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 14220,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 14230,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14240,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 14250,
+        "ue_count": 50
+    },
+    {
+        "timestamp": 14260,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 14270,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14280,
+        "ue_count": 45
+    },
+    {
+        "timestamp": 14290,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 14300,
+        "ue_count": 46
+    },
+    {
+        "timestamp": 14310,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 14320,
+        "ue_count": 48
+    },
+    {
+        "timestamp": 14330,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14340,
+        "ue_count": 49
+    },
+    {
+        "timestamp": 14350,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 14360,
+        "ue_count": 42
+    },
+    {
+        "timestamp": 14370,
+        "ue_count": 44
+    },
+    {
+        "timestamp": 14380,
+        "ue_count": 47
+    },
+    {
+        "timestamp": 14390,
+        "ue_count": 51
+    },
+    {
+        "timestamp": 14400,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14410,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14420,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14430,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14440,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14450,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14460,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14470,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14480,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14490,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14500,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14510,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14520,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14530,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14540,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14550,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14560,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14570,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14580,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14590,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14600,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14610,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14620,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14630,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14640,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14650,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14660,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14670,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14680,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14690,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14700,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14710,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14720,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14730,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14740,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14750,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14760,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14770,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 14780,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14790,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 14800,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14810,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14820,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 14830,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14840,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 14850,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14860,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14870,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14880,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14890,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 14900,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 14910,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14920,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14930,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 14940,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 14950,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14960,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 14970,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 14980,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 14990,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15000,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15010,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15020,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15030,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15040,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15050,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15060,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15070,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15080,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15090,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15100,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15110,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15120,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15130,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15140,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15150,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15160,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15170,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 15180,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 15190,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15200,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15210,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 15220,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15230,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 15240,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15250,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 15260,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15270,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15280,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15290,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15300,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15310,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15320,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15330,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15340,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15350,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15360,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15370,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15380,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15390,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15400,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15410,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15420,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15430,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15440,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15450,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15460,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15470,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15480,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15490,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15500,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15510,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15520,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15530,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15540,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15550,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15560,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15570,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15580,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15590,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15600,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15610,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15620,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 15630,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15640,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15650,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15660,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15670,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15680,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15690,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15700,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15710,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15720,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15730,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15740,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15750,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15760,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15770,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15780,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15790,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15800,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15810,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 15820,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15830,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 15840,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15850,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15860,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15870,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15880,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 15890,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15900,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15910,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15920,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15930,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15940,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15950,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 15960,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 15970,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 15980,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 15990,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16000,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16010,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16020,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 16030,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16040,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16050,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16060,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16070,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16080,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16090,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16100,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16110,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 16120,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16130,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16140,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16150,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16160,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16170,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16180,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16190,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16200,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16210,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16220,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16230,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16240,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16250,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16260,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16270,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16280,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16290,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16300,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16310,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16320,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16330,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16340,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16350,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16360,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16370,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16380,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16390,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16400,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16410,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16420,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16430,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16440,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16450,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16460,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16470,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16480,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16490,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 16500,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16510,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16520,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16530,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16540,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16550,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16560,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16570,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16580,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16590,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16600,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16610,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16620,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16630,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16640,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 16650,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16660,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16670,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16680,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16690,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16700,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16710,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16720,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 16730,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16740,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16750,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16760,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16770,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16780,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16790,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16800,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16810,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16820,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16830,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16840,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16850,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 16860,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 16870,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16880,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16890,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 16900,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16910,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16920,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 16930,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16940,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 16950,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 16960,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 16970,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 16980,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 16990,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17000,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17010,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17020,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17030,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17040,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17050,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17060,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17070,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17080,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 17090,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17100,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17110,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17120,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17130,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17140,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17150,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17160,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17170,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 17180,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17190,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17200,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17210,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17220,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17230,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17240,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17250,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17260,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17270,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17280,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17290,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17300,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17310,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17320,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17330,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17340,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17350,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17360,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17370,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17380,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17390,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17400,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17410,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17420,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17430,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17440,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 17450,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17460,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17470,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17480,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17490,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17500,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17510,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17520,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17530,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17540,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17550,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17560,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17570,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17580,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17590,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17600,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17610,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17620,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17630,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 17640,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17650,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17660,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 17670,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17680,
+        "ue_count": 35
+    },
+    {
+        "timestamp": 17690,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17700,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17710,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17720,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17730,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17740,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17750,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17760,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17770,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17780,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17790,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17800,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 17810,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17820,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17830,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17840,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17850,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17860,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 17870,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17880,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17890,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17900,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17910,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17920,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17930,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17940,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 17950,
+        "ue_count": 33
+    },
+    {
+        "timestamp": 17960,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 17970,
+        "ue_count": 32
+    },
+    {
+        "timestamp": 17980,
+        "ue_count": 34
+    },
+    {
+        "timestamp": 17990,
+        "ue_count": 31
+    },
+    {
+        "timestamp": 18000,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18010,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18020,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18030,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18040,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18050,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18060,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18070,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18080,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18090,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18100,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18110,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18120,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18130,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18140,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18150,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18160,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18170,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18180,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18190,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18200,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18210,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18220,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18230,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18240,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18250,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18260,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18270,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18280,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18290,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18300,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18310,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18320,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18330,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18340,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18350,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18360,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18370,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18380,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18390,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18400,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18410,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18420,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18430,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18440,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18450,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18460,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18470,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18480,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18490,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18500,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18510,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18520,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18530,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18540,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18550,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18560,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18570,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18580,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18590,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18600,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18610,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18620,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18630,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18640,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18650,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18660,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18670,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18680,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18690,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18700,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18710,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18720,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18730,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18740,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18750,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18760,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18770,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18780,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18790,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18800,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18810,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18820,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18830,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18840,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18850,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 18860,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18870,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18880,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18890,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18900,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18910,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18920,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18930,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 18940,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18950,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 18960,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 18970,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 18980,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 18990,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19000,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19010,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19020,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19030,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19040,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19050,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19060,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19070,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19080,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19090,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19100,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19110,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19120,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19130,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19140,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19150,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19160,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19170,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19180,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19190,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19200,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19210,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19220,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19230,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19240,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19250,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19260,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19270,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19280,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19290,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19300,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19310,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19320,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19330,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19340,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19350,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19360,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19370,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19380,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19390,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19400,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19410,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19420,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19430,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19440,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19450,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19460,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19470,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19480,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19490,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19500,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19510,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19520,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19530,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19540,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19550,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19560,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19570,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19580,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19590,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19600,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19610,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19620,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19630,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19640,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19650,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19660,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19670,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19680,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19690,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19700,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19710,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19720,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19730,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19740,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19750,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19760,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19770,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19780,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19790,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19800,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19810,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19820,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19830,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19840,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19850,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19860,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19870,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 19880,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19890,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19900,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 19910,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19920,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19930,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 19940,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19950,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 19960,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19970,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 19980,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 19990,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20000,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20010,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20020,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20030,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20040,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20050,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20060,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20070,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20080,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20090,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20100,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20110,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20120,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20130,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20140,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20150,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20160,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20170,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20180,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20190,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20200,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20210,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20220,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20230,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20240,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20250,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20260,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20270,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20280,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20290,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20300,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20310,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20320,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20330,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20340,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20350,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20360,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20370,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20380,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20390,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20400,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20410,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20420,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20430,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20440,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20450,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20460,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20470,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20480,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20490,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20500,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20510,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20520,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20530,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20540,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20550,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20560,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20570,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20580,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20590,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20600,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20610,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20620,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20630,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20640,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20650,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20660,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20670,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20680,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20690,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20700,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20710,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20720,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20730,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20740,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20750,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20760,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20770,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20780,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20790,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20800,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20810,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20820,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20830,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20840,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20850,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20860,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20870,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20880,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20890,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20900,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 20910,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 20920,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 20930,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 20940,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20950,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 20960,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20970,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20980,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 20990,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21000,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21010,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21020,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21030,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21040,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21050,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21060,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21070,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21080,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21090,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21100,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 21110,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21120,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 21130,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21140,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 21150,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21160,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21170,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21180,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21190,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21200,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21210,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21220,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21230,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21240,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21250,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21260,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21270,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 21280,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21290,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21300,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21310,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21320,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21330,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21340,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 21350,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21360,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21370,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21380,
+        "ue_count": 29
+    },
+    {
+        "timestamp": 21390,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21400,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 21410,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 21420,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21430,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21440,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21450,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 21460,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21470,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21480,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21490,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21500,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21510,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21520,
+        "ue_count": 27
+    },
+    {
+        "timestamp": 21530,
+        "ue_count": 28
+    },
+    {
+        "timestamp": 21540,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21550,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21560,
+        "ue_count": 26
+    },
+    {
+        "timestamp": 21570,
+        "ue_count": 25
+    },
+    {
+        "timestamp": 21580,
+        "ue_count": 30
+    },
+    {
+        "timestamp": 21590,
+        "ue_count": 26
+    }
+]
