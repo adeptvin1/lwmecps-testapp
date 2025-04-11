@@ -59,7 +59,6 @@ class Experiment(BaseModel):
     """Модель эксперимента.
     
     Параметры:
-    - id: уникальный идентификатор
     - name: название эксперимента
     - settings: настройки эксперимента
     - state: текущее состояние
@@ -68,7 +67,6 @@ class Experiment(BaseModel):
     - created_at: время создания
     - updated_at: время последнего обновления
     """
-    id: Optional[str] = Field(None, description="Уникальный идентификатор")
     name: str = Field(..., description="Название эксперимента")
     settings: ExperimentSettings = Field(..., description="Настройки эксперимента")
     state: ExperimentState = Field(ExperimentState.PENDING, description="Текущее состояние")
@@ -82,7 +80,6 @@ class ExperimentStats(BaseModel):
     """Статистика эксперимента.
     
     Параметры:
-    - experiment_id: ID эксперимента
     - current_users: текущее количество пользователей
     - current_interval: текущий интервал между запросами
     - current_profile_index: индекс текущего профиля
@@ -92,7 +89,6 @@ class ExperimentStats(BaseModel):
     - requests_count: количество запросов
     - success_rate: процент успешных запросов
     """
-    experiment_id: str = Field(..., description="ID эксперимента")
     current_users: int = Field(..., description="Текущее количество пользователей")
     current_interval: float = Field(..., description="Текущий интервал между запросами")
     current_profile_index: int = Field(..., description="Индекс текущего профиля")
@@ -107,14 +103,12 @@ class ExperimentGroup(BaseModel):
     """Группа экспериментов.
     
     Параметры:
-    - id: уникальный идентификатор
     - name: название группы
     - experiment_ids: список ID экспериментов
     - state: текущее состояние
     - created_at: время создания
     - updated_at: время последнего обновления
     """
-    id: Optional[str] = Field(None, description="Уникальный идентификатор")
     name: str = Field(..., description="Название группы")
     experiment_ids: List[str] = Field(default_factory=list, description="Список ID экспериментов")
     state: ExperimentState = Field(ExperimentState.PENDING, description="Текущее состояние")
@@ -126,14 +120,12 @@ class GroupStats(BaseModel):
     """Статистика группы экспериментов.
     
     Параметры:
-    - group_id: ID группы
     - state: текущее состояние
     - experiments_stats: статистика по каждому эксперименту
     - total_requests: общее количество запросов
     - average_latency: среднее время ответа
     - success_rate: процент успешных запросов
     """
-    group_id: str = Field(..., description="ID группы")
     state: ExperimentState = Field(..., description="Текущее состояние")
     experiments_stats: Dict[str, ExperimentStats] = Field(..., description="Статистика по каждому эксперименту")
     total_requests: int = Field(..., description="Общее количество запросов")
