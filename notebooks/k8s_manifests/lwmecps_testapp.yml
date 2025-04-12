@@ -51,12 +51,12 @@ spec:
           - name: PORT
             value: "0.0.0.0"
           - name: MONGO_URI
-            value: "mongodb://admin:password@lwmecps-gym-mongodb.lwmecps-gym:27017/"
+            value: "mongodb://admin:password@mongodb:27017/"
           - name: DATABASE_NAME
             value: "network_checks"
         ports:
         - containerPort:  8001
-          name:  lwmecps-testapp-client
+          name:  testapp-client
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
@@ -82,7 +82,7 @@ spec:
     clientIP:
       timeoutSeconds: 10800
   ports:
-  - name: lwmecps-testapp-client
+  - name: testapp-client
     protocol: TCP
     port: 8001
     targetPort: 8001
@@ -129,7 +129,7 @@ spec:
             memory: 100Mi
         ports:
         - containerPort:  8000
-          name:  lwmecps-testapp-server
+          name:  testapp-server
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
@@ -155,7 +155,7 @@ spec:
     clientIP:
       timeoutSeconds: 10800
   ports:
-  - name: lwmecps-testapp-server
+  - name: testapp-server
     protocol: TCP
     port: 8000
     targetPort: 8000
