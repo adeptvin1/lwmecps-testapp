@@ -1,0 +1,23 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: basestation-network-latency-minikube
+  namespace: litmus
+spec:
+  engineState: 'active'
+  appinfo:
+    appns: "lwmecps-testapp"                          # namespace, где запущены поды с меткой basestation
+    applabel: "bs=minikube"                   # селектор подов, к которым применяется задержка
+    appkind: deployment                     # или pod/statefulset, если у вас не deployment
+  chaosServiceAccount: litmus-admin         # убедитесь, что у вас есть соответствующий RBAC
+  experiments:
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # Задержка в миллисекундах
+            - name: NETWORK_LATENCY
+              value: '10'
+            # Продолжительность эксперимента
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'
