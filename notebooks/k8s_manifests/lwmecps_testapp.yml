@@ -112,7 +112,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server
+        app:  lwmecps-testapp-server-bs0
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
@@ -185,7 +185,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server
+        app:  lwmecps-testapp-server-bs1
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
@@ -258,7 +258,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server
+        app:  lwmecps-testapp-server-bs2
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
@@ -321,7 +321,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: lwmecps-testapp-server-bs31
+      app: lwmecps-testapp-server-bs3
   replicas: 1
   strategy:
     rollingUpdate:
@@ -331,7 +331,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server
+        app:  lwmecps-testapp-server-bs3
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
