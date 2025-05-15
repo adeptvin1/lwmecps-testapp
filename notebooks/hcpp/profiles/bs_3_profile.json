@@ -2,7 +2,12 @@
     "id": "bs_3",
     "name": "Base Station 3",
     "settings": {
-        "host": "bs_3.local",
+        "host": [
+            "lwmecps-testapp-server-bs3",
+            "lwmecps-testapp-server-bs0",
+            "lwmecps-testapp-server-bs1",
+            "lwmecps-testapp-server-bs2"
+        ],
         "port": 8080,
         "load_profiles": [
             {

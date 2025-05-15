@@ -36,6 +36,7 @@ spec:
       containers:
       - name:  lwmecps-testapp-client
         image:  adeptvin4/lwmecps-testapp-client:latest
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: 100m
@@ -94,14 +95,14 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  lwmecps-testapp-server
+  name:  lwmecps-testapp-server-bs0
   namespace: lwmecps-testapp
   labels:
     app:  lwmecps-testapp-server
 spec:
   selector:
     matchLabels:
-      app: lwmecps-testapp-server
+      app: lwmecps-testapp-server-bs0
   replicas: 1
   strategy:
     rollingUpdate:
@@ -144,11 +145,230 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lwmecps-testapp-server
+  name: lwmecps-testapp-server-bs0
   namespace: lwmecps-testapp
 spec:
   selector:
-    app: lwmecps-testapp-server
+    app: lwmecps-testapp-server-bs0
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: testapp-server
+    protocol: TCP
+    port: 8000
+    targetPort: 8000
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  lwmecps-testapp-server-bs1
+  namespace: lwmecps-testapp
+  labels:
+    app:  lwmecps-testapp-server
+spec:
+  selector:
+    matchLabels:
+      app: lwmecps-testapp-server-bs1
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  lwmecps-testapp-server
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  lwmecps-testapp-server
+        image:  adeptvin4/lwmecps-testapp-server:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  8000
+          name:  testapp-server
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Europe/Moscow
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lwmecps-testapp-server-bs1
+  namespace: lwmecps-testapp
+spec:
+  selector:
+    app: lwmecps-testapp-server-bs1
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: testapp-server
+    protocol: TCP
+    port: 8000
+    targetPort: 8000
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  lwmecps-testapp-server-bs2
+  namespace: lwmecps-testapp
+  labels:
+    app:  lwmecps-testapp-server
+spec:
+  selector:
+    matchLabels:
+      app: lwmecps-testapp-server-bs2
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  lwmecps-testapp-server
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  lwmecps-testapp-server
+        image:  adeptvin4/lwmecps-testapp-server:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  8000
+          name:  testapp-server
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Europe/Moscow
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lwmecps-testapp-server-bs2
+  namespace: lwmecps-testapp
+spec:
+  selector:
+    app: lwmecps-testapp-server-bs2
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: testapp-server
+    protocol: TCP
+    port: 8000
+    targetPort: 8000
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  lwmecps-testapp-server-bs3
+  namespace: lwmecps-testapp
+  labels:
+    app:  lwmecps-testapp-server
+spec:
+  selector:
+    matchLabels:
+      app: lwmecps-testapp-server-bs31
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  lwmecps-testapp-server
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  lwmecps-testapp-server
+        image:  adeptvin4/lwmecps-testapp-server:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  8000
+          name:  testapp-server
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Europe/Moscow
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lwmecps-testapp-server-bs3
+  namespace: lwmecps-testapp
+spec:
+  selector:
+    app: lwmecps-testapp-server-bs3
   type: ClusterIP
   sessionAffinity: None
   sessionAffinityConfig:
