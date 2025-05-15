@@ -5,7 +5,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./client /app
+COPY . /app
+ENV PYTHONPATH=/app
 ENV HOST=0.0.0.0
 ENV PORT=8001
 ENV SERVER_URL=http://localhost:8000
@@ -16,4 +17,4 @@ ENV DEFAULT_TIMEOUT=1.0
 ENV DEFAULT_COUNT=10
 ENV LOG_LEVEL=INFO
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["uvicorn", "client.main:app", "--host", "0.0.0.0", "--port", "8001"]

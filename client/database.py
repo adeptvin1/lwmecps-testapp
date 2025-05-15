@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from config import settings
+from client.config import settings
 
 # Глобальные переменные для соединения
 client = None

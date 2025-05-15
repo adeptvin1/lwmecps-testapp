@@ -2,13 +2,13 @@ from fastapi import APIRouter, HTTPException, Depends
 from datetime import datetime, timedelta
 import httpx
 import time
-from models import (
+from client.models import (
     ExperimentSettings, ExperimentResult, Experiment, 
     LoadProfile, ExperimentState, ExperimentStats,
-    ExperimentGroup, GroupStats
+    ExperimentGroup, GroupStats, Host
 )
 import asyncio
-from database import get_database
+from client.database import get_database
 from bson import ObjectId
 from typing import List, Dict
 import json
@@ -65,9 +65,10 @@ async def get_experiment_by_id(experiment_id: str, db=Depends(get_database)):
                             )
 
 
-async def measure_latency(host, port):
+async def try_host(host: str, port: int, timeout: float) -> ExperimentResult:
+    """Пробует отправить запрос к одному хосту с таймаутом."""
     try:
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=timeout) as client:
             start_time = time.monotonic()
             response = await client.get(f"http://{host}:{port}/api/latency")
             end_time = time.monotonic()
@@ -77,7 +78,7 @@ async def measure_latency(host, port):
                 latency_ms=latency,
                 timestamp=datetime.now()
             )
-    except httpx.RequestError as e:
+    except (httpx.RequestError, httpx.TimeoutException) as e:
         return ExperimentResult(
             status_code=0,
             latency_ms=-1,
@@ -86,9 +87,24 @@ async def measure_latency(host, port):
         )
 
 
+async def measure_latency(hosts: List[Host], timeout: float) -> ExperimentResult:
+    """Измеряет латентность, пробуя хосты по очереди."""
+    for host_info in hosts:
+        # Преобразуем словарь в объект Host, если это необходимо
+        if isinstance(host_info, dict):
+            host_info = Host(**host_info)
+        result = await try_host(host_info.host, host_info.port, timeout)
+        if result.status_code == 200 and result.latency_ms > 0:
+            return result
+    
+    # Если все хосты не ответили, возвращаем последний результат с ошибкой
+    return result
+
+
 @router.get("/test-latency")
-async def test_latency(host: str, port: int):
-    result = await measure_latency(host, port)
+async def test_latency(settings: ExperimentSettings):
+    """Тестирует латентность с использованием списка хостов с приоритетами."""
+    result = await measure_latency(settings.hosts, settings.timeout)
     return result
 
 
@@ -197,8 +213,13 @@ async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
     success_count = sum(1 for r in results if r.get("status_code", 0) == 200)
     
     # Статистика за интервал
-    request_interval = current_profile["request_interval"]
-    timestamps = [r.get("timestamp", datetime.now()) for r in results]
+    request_interval = int(current_profile["request_interval"])
+    timestamps = []
+    for r in results:
+        ts = r.get("timestamp")
+        if isinstance(ts, str):
+            ts = datetime.fromisoformat(ts)
+        timestamps.append(ts or datetime.now())
     
     # Группируем результаты по интервалам
     interval_results = {}
@@ -233,13 +254,7 @@ async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
 
 
 async def run_experiment(experiment_id: str):
-    """Фоновая задача для выполнения эксперимента с динамической нагрузкой.
-    
-    Args:
-        experiment_id (str): ID эксперимента для запуска
-        
-    Процесс выполнения:
-    """
+    """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
     db = await get_database()
     experiment = await get_experiment_by_id(experiment_id, db)
     
@@ -262,7 +277,7 @@ async def run_experiment(experiment_id: str):
         while datetime.now() < end_time:
             tasks = []
             for _ in range(concurrent_users):
-                task = measure_latency(settings["host"], settings["port"])
+                task = measure_latency(settings["hosts"], settings["timeout"])
                 tasks.append(task)
             
             results = await asyncio.gather(*tasks)

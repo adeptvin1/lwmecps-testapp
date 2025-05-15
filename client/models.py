@@ -27,17 +27,28 @@ class ExperimentState(str, Enum):
     FAILED = "failed"
 
 
-class ExperimentSettings(BaseModel):
-    """Настройки эксперимента.
+class Host(BaseModel):
+    """Хост для эксперимента.
     
     Параметры:
     - host: адрес сервера
     - port: порт сервера
-    - load_profiles: список профилей нагрузки
     """
     host: str = Field(..., description="Адрес сервера")
     port: int = Field(..., description="Порт сервера")
+
+
+class ExperimentSettings(BaseModel):
+    """Настройки эксперимента.
+    
+    Параметры:
+    - hosts: список хостов
+    - load_profiles: список профилей нагрузки
+    - timeout: максимальное время ожидания ответа в секундах
+    """
+    hosts: List[Host] = Field(..., description="Список хостов")
     load_profiles: List[LoadProfile] = Field(..., description="Список профилей нагрузки")
+    timeout: float = Field(1.0, description="Максимальное время ожидания ответа в секундах")
 
 
 class ExperimentResult(BaseModel):

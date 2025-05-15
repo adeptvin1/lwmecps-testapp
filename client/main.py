@@ -5,9 +5,9 @@ from fastapi.responses import JSONResponse
 import uvicorn
 # from typing import List
 
-from api.endpoints import router as api_router
-from config import settings
-from database import init_db
+from client.api.endpoints import router as api_router
+from client.config import settings
+from client.database import init_db
 
 app = FastAPI(
     title="LWMECPS Client Test App API",
@@ -57,7 +57,7 @@ async def root():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "main:app",
+        "client.main:app",
         host=settings.HOST,
         port=settings.PORT,
         reload=settings.DEBUG,
