@@ -8,7 +8,7 @@
             "lwmecps-testapp-server-bs3",
             "lwmecps-testapp-server-bs0"
         ],
-        "port": 8080,
+        "port": 8000,
         "load_profiles": [
             {
                 "concurrent_users": 29,
