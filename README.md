@@ -1,19 +1,144 @@
-# lwmecps-app
+# LWMECPS Test App
+
+Система для тестирования сетевых соединений и эмуляции нагрузки.
+
+## Компоненты
+
+- **Server** (`/server`) - Серверный компонент для эмуляции нагрузки
+- **Client** (`/client`) - Клиентский компонент для управления тестами
+- **MongoDB** - База данных для хранения результатов
 
 ## Быстрый старт
 
-Для запуска приложения выполните:
-
 ```bash
-docker-compose up -d --build
+# Запуск всех компонентов
+docker-compose up -d
+
+# Проверка статуса
+docker-compose ps
+
+# Просмотр логов
+docker-compose logs -f
 ```
 
-Это создаст и запустит все необходимые контейнеры (API, MongoDB) в фоновом режиме.
+## Порты
 
-После запуска сервисы будут доступны по следующим адресам:
-- API: http://localhost:8001
-- Swagger UI: http://localhost:8001/docs
-- MongoDB: mongodb://localhost:27017
+- Client API: `8001`
+- Server API: `8000`
+- MongoDB: `27017`
+
+## Структура проекта
+
+```
+.
+├── client/           # Клиентский компонент
+│   ├── api/         # API endpoints
+│   ├── models/      # Pydantic модели
+│   └── database.py  # MongoDB подключение
+├── server/          # Серверный компонент
+│   ├── api/         # API endpoints
+│   └── config.py    # Конфигурация
+└── docker-compose.yml
+```
+
+## Настройка
+
+### Переменные окружения
+
+Создайте файл `.env` в корневой директории:
+
+```env
+# Client
+CLIENT_HOST=0.0.0.0
+CLIENT_PORT=8001
+CLIENT_DEBUG=True
+MONGODB_URI=mongodb://mongodb:27017
+DATABASE_NAME=network_checks
+
+# Server
+SERVER_HOST=0.0.0.0
+SERVER_PORT=8000
+SERVER_DEBUG=True
+CPU_LIMIT=200
+RAM_LIMIT=256
+MAX_LATENCY=0.5
+```
+
+## Использование
+
+1. Запустите систему:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. Создайте эксперимент:
+   ```bash
+   curl -X POST "http://localhost:8001/api/create_experiment" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "settings": {
+         "hosts": [{"host": "server", "port": 8000}],
+         "timeout": 1.0,
+         "load_profiles": [{
+           "concurrent_users": 1,
+           "request_interval": 1.0,
+           "profile_duration": 60
+         }]
+       }
+     }'
+   ```
+
+3. Запустите эксперимент:
+   ```bash
+   curl -X POST "http://localhost:8001/api/manage_experiment?state=start&experiment_id=<id>"
+   ```
+
+4. Проверьте статистику:
+   ```bash
+   curl -X GET "http://localhost:8001/api/experiment_stats?experiment_id=<id>"
+   ```
+
+## Мониторинг
+
+- Метрики Prometheus доступны на:
+  - Client: `http://localhost:8001/metrics`
+  - Server: `http://localhost:8000/metrics`
+
+## Разработка
+
+### Требования
+
+- Python 3.10+
+- Docker и Docker Compose
+- MongoDB
+
+### Установка зависимостей
+
+```bash
+# Client
+cd client
+pip install -r requirements.txt
+
+# Server
+cd server
+pip install -r requirements.txt
+```
+
+### Запуск в режиме разработки
+
+```bash
+# Client
+cd client
+uvicorn main:app --reload --host 0.0.0.0 --port 8001
+
+# Server
+cd server
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+## Лицензия
+
+MIT
 
 ## Описание
 

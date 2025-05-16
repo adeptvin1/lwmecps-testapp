@@ -1,6 +1,7 @@
 {
     "id": "bs_2",
     "name": "Base Station 2",
+    "timeout": 0.4,
     "settings": {
         "hosts": [
             {

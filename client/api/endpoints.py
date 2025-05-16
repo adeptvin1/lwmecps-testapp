@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from datetime import datetime, timedelta
 import httpx
 import time
+import socket
 from client.models import (
     ExperimentSettings, ExperimentResult, Experiment, 
     LoadProfile, ExperimentState, ExperimentStats,
@@ -65,8 +66,32 @@ async def get_experiment_by_id(experiment_id: str, db=Depends(get_database)):
                             )
 
 
+async def check_dns(host: str) -> tuple[bool, str]:
+    """Проверяет резолвинг DNS для хоста.
+    
+    Returns:
+        tuple[bool, str]: (успешность резолва, сообщение об ошибке)
+    """
+    try:
+        socket.gethostbyname(host)
+        return True, ""
+    except socket.gaierror as e:
+        return False, f"DNS resolution failed: {str(e)}"
+
+
 async def try_host(host: str, port: int, timeout: float) -> ExperimentResult:
     """Пробует отправить запрос к одному хосту с таймаутом."""
+    # Сначала проверяем DNS
+    dns_ok, dns_error = await check_dns(host)
+    if not dns_ok:
+        return ExperimentResult(
+            status_code=0,
+            latency_ms=-1,
+            timestamp=datetime.now(),
+            error=dns_error,
+            host_info=Host(host=host, port=port)
+        )
+
     try:
         async with httpx.AsyncClient(timeout=timeout) as client:
             start_time = time.monotonic()
@@ -76,29 +101,65 @@ async def try_host(host: str, port: int, timeout: float) -> ExperimentResult:
             return ExperimentResult(
                 status_code=response.status_code,
                 latency_ms=latency,
-                timestamp=datetime.now()
+                timestamp=datetime.now(),
+                host_info=Host(host=host, port=port)
             )
-    except (httpx.RequestError, httpx.TimeoutException) as e:
+    except httpx.ConnectError as e:
         return ExperimentResult(
             status_code=0,
             latency_ms=-1,
             timestamp=datetime.now(),
-            error=str(e)
+            error=f"Connection error: {str(e)}",
+            host_info=Host(host=host, port=port)
+        )
+    except httpx.ConnectTimeout as e:
+        return ExperimentResult(
+            status_code=0,
+            latency_ms=-1,
+            timestamp=datetime.now(),
+            error=f"Connection timeout: {str(e)}",
+            host_info=Host(host=host, port=port)
+        )
+    except httpx.ReadTimeout as e:
+        return ExperimentResult(
+            status_code=0,
+            latency_ms=-1,
+            timestamp=datetime.now(),
+            error=f"Read timeout: {str(e)}",
+            host_info=Host(host=host, port=port)
+        )
+    except httpx.HTTPError as e:
+        return ExperimentResult(
+            status_code=0,
+            latency_ms=-1,
+            timestamp=datetime.now(),
+            error=f"HTTP error: {str(e)}",
+            host_info=Host(host=host, port=port)
+        )
+    except Exception as e:
+        return ExperimentResult(
+            status_code=0,
+            latency_ms=-1,
+            timestamp=datetime.now(),
+            error=f"Unexpected error: {str(e)}",
+            host_info=Host(host=host, port=port)
         )
 
 
 async def measure_latency(hosts: List[Host], timeout: float) -> ExperimentResult:
     """Измеряет латентность, пробуя хосты по очереди."""
+    results = []
     for host_info in hosts:
         # Преобразуем словарь в объект Host, если это необходимо
         if isinstance(host_info, dict):
             host_info = Host(**host_info)
         result = await try_host(host_info.host, host_info.port, timeout)
+        results.append(result)
         if result.status_code == 200 and result.latency_ms > 0:
             return result
     
     # Если все хосты не ответили, возвращаем последний результат с ошибкой
-    return result
+    return results[-1] if results else None
 
 
 @router.get("/test-latency")
@@ -193,7 +254,9 @@ async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
     if not experiment:
         raise HTTPException(status_code=404, detail="Experiment not found")
 
-    current_profile = experiment["settings"]["load_profiles"][experiment["current_profile_index"]]
+    # Проверяем, что current_profile_index не выходит за пределы списка профилей
+    current_profile_index = min(experiment["current_profile_index"], len(experiment["settings"]["load_profiles"]) - 1)
+    current_profile = experiment["settings"]["load_profiles"][current_profile_index]
     results = experiment.get("results", [])
     
     if not results:
@@ -213,7 +276,7 @@ async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
     success_count = sum(1 for r in results if r.get("status_code", 0) == 200)
     
     # Статистика за интервал
-    request_interval = int(current_profile["request_interval"])
+    request_interval = max(1, int(current_profile["request_interval"]))
     timestamps = []
     for r in results:
         ts = r.get("timestamp")
@@ -225,9 +288,11 @@ async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
     interval_results = {}
     for result, timestamp in zip(results, timestamps):
         # Округляем timestamp до ближайшего интервала
+        second = int((timestamp.second // request_interval) * request_interval)
+        second = min(max(second, 0), 59)
         interval_start = timestamp.replace(
             microsecond=0,
-            second=(timestamp.second // request_interval) * request_interval
+            second=second
         )
         if interval_start not in interval_results:
             interval_results[interval_start] = []

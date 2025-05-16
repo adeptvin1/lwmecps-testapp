@@ -48,7 +48,7 @@ class ExperimentSettings(BaseModel):
     """
     hosts: List[Host] = Field(..., description="Список хостов")
     load_profiles: List[LoadProfile] = Field(..., description="Список профилей нагрузки")
-    timeout: float = Field(1.0, description="Максимальное время ожидания ответа в секундах")
+    timeout: float = Field(0.4, description="Максимальное время ожидания ответа в секундах")
 
 
 class ExperimentResult(BaseModel):
@@ -59,11 +59,13 @@ class ExperimentResult(BaseModel):
     - latency_ms: время ответа в миллисекундах
     - timestamp: время выполнения запроса
     - error: описание ошибки (если есть)
+    - host_info: информация о хосте, который ответил
     """
     status_code: int = Field(..., description="HTTP код ответа")
     latency_ms: float = Field(..., description="Время ответа в миллисекундах")
     timestamp: datetime = Field(..., description="Время выполнения запроса")
     error: Optional[str] = Field(None, description="Описание ошибки")
+    host_info: Optional[Host] = Field(None, description="Информация о хосте, который ответил")
 
 
 class Experiment(BaseModel):
