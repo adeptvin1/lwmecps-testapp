@@ -95,14 +95,14 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  lwmecps-testapp-server-bs0
+  name:  lwmecps-testapp-server-bs4
   namespace: lwmecps-testapp
   labels:
     app:  lwmecps-testapp-server
 spec:
   selector:
     matchLabels:
-      app: lwmecps-testapp-server-bs0
+      app: lwmecps-testapp-server-bs4
   replicas: 1
   strategy:
     rollingUpdate:
@@ -112,7 +112,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server-bs0
+        app:  lwmecps-testapp-server-bs4
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
@@ -145,11 +145,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lwmecps-testapp-server-bs0
+  name: lwmecps-testapp-server-bs4
   namespace: lwmecps-testapp
 spec:
   selector:
-    app: lwmecps-testapp-server-bs0
+    app: lwmecps-testapp-server-bs4
   type: ClusterIP
   sessionAffinity: None
   sessionAffinityConfig:
