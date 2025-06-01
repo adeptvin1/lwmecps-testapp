@@ -53,10 +53,14 @@ router = APIRouter()
 
 
 async def get_experiment_by_id(experiment_id: str, db=Depends(get_database)):
+    """Получает эксперимент по ID."""
     try:
+        if not ObjectId.is_valid(experiment_id):
+            raise HTTPException(status_code=400, detail="Invalid experiment ID format")
+
         experiment = await db.experiments.find_one(
-                            {"_id": ObjectId(experiment_id)}
-                            )
+            {"_id": ObjectId(experiment_id)}
+        )
         if experiment is None:
             raise HTTPException(status_code=404, detail="Experiment not found")
 
@@ -64,10 +68,10 @@ async def get_experiment_by_id(experiment_id: str, db=Depends(get_database)):
         experiment = parse_mongo_doc(experiment)
         return experiment
 
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=400,
-                            detail=f"Invalid experiment ID: {str(e)}"
-                            )
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 
 async def check_dns(host: str) -> tuple[bool, str]:
@@ -293,58 +297,79 @@ async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
 
 async def run_experiment(experiment_id: str):
     """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
-    db = await get_database()
-    experiment = await get_experiment_by_id(experiment_id, db)
-    
-    if not experiment:
-        return
+    try:
+        db = await get_database()
+        experiment = await get_experiment_by_id(experiment_id, db)
+        
+        if not experiment:
+            print(f"Experiment {experiment_id} not found")
+            return
 
-    settings = experiment["settings"]
-    load_profiles = settings["load_profiles"]
-    current_profile_index = experiment["current_profile_index"]
-    
-    while current_profile_index < len(load_profiles):
-        profile = load_profiles[current_profile_index]
-        concurrent_users = profile["concurrent_users"]
-        request_interval = profile["request_interval"]
-        profile_duration = profile["profile_duration"]
+        settings = experiment["settings"]
+        load_profiles = settings["load_profiles"]
+        current_profile_index = experiment["current_profile_index"]
         
-        start_time = datetime.now()
-        end_time = start_time + timedelta(seconds=profile_duration)
-        
-        results_buffer = []
-        
-        while datetime.now() < end_time:
-            tasks = []
-            for _ in range(concurrent_users):
-                task = measure_latency(settings["hosts"], settings["timeout"])
-                tasks.append(task)
-            
-            results = await asyncio.gather(*tasks)
-            results_buffer.extend([r.dict() for r in results])
-            
-            # Сохраняем результаты чанками
-            if len(results_buffer) >= CHUNK_SIZE:
-                await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+        while current_profile_index < len(load_profiles):
+            try:
+                profile = load_profiles[current_profile_index]
+                concurrent_users = profile["concurrent_users"]
+                request_interval = profile["request_interval"]
+                profile_duration = profile["profile_duration"]
+                
+                start_time = datetime.now()
+                end_time = start_time + timedelta(seconds=profile_duration)
+                
                 results_buffer = []
-            
-            await asyncio.sleep(request_interval)
+                
+                while datetime.now() < end_time:
+                    try:
+                        tasks = []
+                        for _ in range(concurrent_users):
+                            task = measure_latency(settings["hosts"], settings["timeout"])
+                            tasks.append(task)
+                        
+                        results = await asyncio.gather(*tasks)
+                        results_buffer.extend([r.dict() for r in results])
+                        
+                        # Сохраняем результаты чанками
+                        if len(results_buffer) >= CHUNK_SIZE:
+                            await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+                            results_buffer = []
+                        
+                        await asyncio.sleep(request_interval)
+                    except Exception as e:
+                        print(f"Error during profile execution: {str(e)}")
+                        continue
+                
+                # Сохраняем оставшиеся результаты
+                if results_buffer:
+                    await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+                
+                current_profile_index += 1
+                await db.experiments.update_one(
+                    {"_id": ObjectId(experiment_id)},
+                    {"$set": {"current_profile_index": current_profile_index}}
+                )
+            except Exception as e:
+                print(f"Error processing profile {current_profile_index}: {str(e)}")
+                current_profile_index += 1
+                continue
         
-        # Сохраняем оставшиеся результаты
-        if results_buffer:
-            await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
-        
-        current_profile_index += 1
+        # Помечаем эксперимент как завершенный
         await db.experiments.update_one(
             {"_id": ObjectId(experiment_id)},
-            {"$set": {"current_profile_index": current_profile_index}}
+            {"$set": {"state": ExperimentState.COMPLETED}}
         )
-    
-    # Помечаем эксперимент как завершенный
-    await db.experiments.update_one(
-        {"_id": ObjectId(experiment_id)},
-        {"$set": {"state": ExperimentState.COMPLETED}}
-    )
+    except Exception as e:
+        print(f"Fatal error in experiment {experiment_id}: {str(e)}")
+        try:
+            # Пытаемся пометить эксперимент как завершившийся с ошибкой
+            await db.experiments.update_one(
+                {"_id": ObjectId(experiment_id)},
+                {"$set": {"state": ExperimentState.FAILED}}
+            )
+        except:
+            pass
 
 
 @router.get("/experiment_stats")
@@ -410,65 +435,84 @@ async def get_group_stats(group_id: str, db=Depends(get_database)):
         if not group:
             raise HTTPException(status_code=404, detail="Group not found")
 
+        # Получаем список ID экспериментов в группе
+        experiment_ids = group.get("experiment_ids", [])
+        if not experiment_ids:
+            return GroupStats(
+                state=group.get("state", ExperimentState.PENDING),
+                experiments_stats={},
+                total_requests=0,
+                average_latency=0,
+                success_rate=0
+            )
+
+        # Получаем статистику по всем экспериментам в группе через агрегацию
+        pipeline = [
+            {
+                "$match": {
+                    "experiment_id": {"$in": experiment_ids}
+                }
+            },
+            {
+                "$group": {
+                    "_id": "$experiment_id",
+                    "total_requests": {"$sum": 1},
+                    "success_count": {
+                        "$sum": {"$cond": [{"$eq": ["$result.status_code", 200]}, 1, 0]}
+                    },
+                    "total_latency": {"$sum": "$result.latency_ms"}
+                }
+            }
+        ]
+
+        # Получаем статистику по каждому эксперименту
         experiments_stats = {}
         total_requests = 0
         total_latency = 0
-        success_count = 0
-        
-        # Обрабатываем каждый эксперимент в группе
-        for exp_id in group.get("experiment_ids", []):
-            try:
-                # Проверяем валидность ID эксперимента
-                if not ObjectId.is_valid(exp_id):
-                    continue
+        total_success = 0
 
-                experiment = await get_experiment_by_id(exp_id, db)
-                if not experiment:
-                    continue
-                    
-                results = experiment.get("results", [])
-                if not results:
-                    continue
-                    
-                # Собираем статистику по результатам
-                latencies = [r.get("latency_ms", 0) for r in results if isinstance(r, dict)]
-                success_count += sum(1 for r in results if isinstance(r, dict) and r.get("status_code", 0) == 200)
-                total_requests += len(results)
-                total_latency += sum(latencies)
-                
-                # Получаем текущий профиль
-                current_profile = experiment.get("settings", {}).get("load_profiles", [])
-                if not current_profile:
-                    continue
-                    
-                current_profile_index = experiment.get("current_profile_index", 0)
-                if current_profile_index >= len(current_profile):
-                    continue
-                    
-                current_profile = current_profile[current_profile_index]
-                
-                experiments_stats[exp_id] = ExperimentStats(
-                    current_users=current_profile.get("concurrent_users", 0),
-                    current_interval=current_profile.get("request_interval", 0),
-                    current_profile_index=current_profile_index,
-                    total_profiles=len(current_profile),
-                    average_latency=sum(latencies) / len(results) if results else 0,
-                    average_latency_per_interval=0,  # Это значение нужно будет вычислить
-                    requests_count=len(results),
-                    success_rate=sum(1 for r in results if isinstance(r, dict) and r.get("status_code", 0) == 200) / len(results) if results else 0
-                )
-            except Exception as e:
-                # Пропускаем эксперимент при ошибке, но продолжаем обработку остальных
+        async for stats in db.experiment_results.aggregate(pipeline):
+            exp_id = stats["_id"]
+            experiment = await get_experiment_by_id(exp_id, db)
+            if not experiment:
                 continue
-        
+
+            # Получаем текущий профиль
+            current_profile = experiment.get("settings", {}).get("load_profiles", [])
+            if not current_profile:
+                continue
+
+            current_profile_index = experiment.get("current_profile_index", 0)
+            if current_profile_index >= len(current_profile):
+                continue
+
+            current_profile = current_profile[current_profile_index]
+
+            # Обновляем общую статистику
+            total_requests += stats["total_requests"]
+            total_latency += stats["total_latency"]
+            total_success += stats["success_count"]
+
+            # Сохраняем статистику по эксперименту
+            experiments_stats[exp_id] = ExperimentStats(
+                current_users=current_profile.get("concurrent_users", 0),
+                current_interval=current_profile.get("request_interval", 0),
+                current_profile_index=current_profile_index,
+                total_profiles=len(current_profile),
+                average_latency=stats["total_latency"] / stats["total_requests"] if stats["total_requests"] > 0 else 0,
+                average_latency_per_interval=0,  # Это значение можно вычислить при необходимости
+                requests_count=stats["total_requests"],
+                success_rate=stats["success_count"] / stats["total_requests"] if stats["total_requests"] > 0 else 0
+            )
+
         return GroupStats(
             state=group.get("state", ExperimentState.PENDING),
             experiments_stats=experiments_stats,
             total_requests=total_requests,
             average_latency=total_latency / total_requests if total_requests > 0 else 0,
-            success_rate=success_count / total_requests if total_requests > 0 else 0
+            success_rate=total_success / total_requests if total_requests > 0 else 0
         )
-        
+
     except HTTPException:
         raise
     except Exception as e:
