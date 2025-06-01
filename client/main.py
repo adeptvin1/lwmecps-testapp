@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 from fastapi.responses import JSONResponse
 import uvicorn
-from motor.errors import ServerSelectionTimeoutError
+from pymongo.errors import ServerSelectionTimeoutError
 import logging
 
 from client.api.endpoints import router as api_router
@@ -90,7 +90,7 @@ async def root():
 if __name__ == "__main__":
     uvicorn.run(
         "client.main:app",
-        host=settings.HOST,
-        port=settings.PORT,
-        reload=settings.DEBUG,
+        host="0.0.0.0",
+        port=8001,
+        reload=True
     )
