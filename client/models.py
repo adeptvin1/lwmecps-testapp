@@ -76,7 +76,6 @@ class Experiment(BaseModel):
     - settings: настройки эксперимента
     - state: текущее состояние
     - current_profile_index: индекс текущего профиля
-    - results: результаты запросов
     - created_at: время создания
     - updated_at: время последнего обновления
     """
@@ -84,7 +83,6 @@ class Experiment(BaseModel):
     settings: ExperimentSettings = Field(..., description="Настройки эксперимента")
     state: ExperimentState = Field(ExperimentState.PENDING, description="Текущее состояние")
     current_profile_index: int = Field(0, description="Индекс текущего профиля")
-    results: List[ExperimentResult] = Field(default_factory=list, description="Результаты запросов")
     created_at: datetime = Field(default_factory=datetime.now, description="Время создания")
     updated_at: datetime = Field(default_factory=datetime.now, description="Время последнего обновления")
 

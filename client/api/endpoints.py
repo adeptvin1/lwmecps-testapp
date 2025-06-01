@@ -15,6 +15,10 @@ from typing import List, Dict
 import json
 
 
+# Константы для оптимизации
+CHUNK_SIZE = 1000  # Размер чанка для сохранения результатов
+
+
 # Создаем кастомный JSON encoder для ObjectId
 class MongoJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -246,76 +250,45 @@ async def delete_experiments():
     return 200
 
 
-@router.get("/experiment_stats")
-async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
-    """Получает текущую статистику эксперимента."""
-    experiment = await get_experiment_by_id(experiment_id, db)
-    
-    if not experiment:
-        raise HTTPException(status_code=404, detail="Experiment not found")
-
-    # Проверяем, что current_profile_index не выходит за пределы списка профилей
-    current_profile_index = min(experiment["current_profile_index"], len(experiment["settings"]["load_profiles"]) - 1)
-    current_profile = experiment["settings"]["load_profiles"][current_profile_index]
-    results = experiment.get("results", [])
-    
+async def save_results_chunk(db, experiment_id: str, profile_index: int, results: List[dict]):
+    """Сохраняет чанк результатов в базу данных."""
     if not results:
-        return ExperimentStats(
-            current_users=current_profile["concurrent_users"],
-            current_interval=current_profile["request_interval"],
-            current_profile_index=experiment["current_profile_index"],
-            total_profiles=len(experiment["settings"]["load_profiles"]),
-            average_latency=0,
-            average_latency_per_interval=0,
-            requests_count=0,
-            success_rate=0
-        )
+        return
+        
+    results_docs = [{
+        "experiment_id": experiment_id,
+        "profile_index": profile_index,
+        "timestamp": datetime.now(),
+        "result": result
+    } for result in results]
+    
+    await db.experiment_results.insert_many(results_docs)
 
-    # Общая статистика
-    latencies = [r.get("latency_ms", 0) for r in results]
-    success_count = sum(1 for r in results if r.get("status_code", 0) == 200)
+
+async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
+    """Получает статистику эксперимента с использованием агрегации MongoDB."""
+    pipeline = [
+        {"$match": {"experiment_id": experiment_id}},
+        {"$group": {
+            "_id": None,
+            "total_requests": {"$sum": 1},
+            "success_count": {
+                "$sum": {"$cond": [{"$eq": ["$result.status_code", 200]}, 1, 0]}
+            },
+            "total_latency": {"$sum": "$result.latency_ms"}
+        }}
+    ]
     
-    # Статистика за интервал
-    request_interval = max(1, int(current_profile["request_interval"]))
-    timestamps = []
-    for r in results:
-        ts = r.get("timestamp")
-        if isinstance(ts, str):
-            ts = datetime.fromisoformat(ts)
-        timestamps.append(ts or datetime.now())
-    
-    # Группируем результаты по интервалам
-    interval_results = {}
-    for result, timestamp in zip(results, timestamps):
-        # Округляем timestamp до ближайшего интервала
-        second = int((timestamp.second // request_interval) * request_interval)
-        second = min(max(second, 0), 59)
-        interval_start = timestamp.replace(
-            microsecond=0,
-            second=second
-        )
-        if interval_start not in interval_results:
-            interval_results[interval_start] = []
-        interval_results[interval_start].append(result.get("latency_ms", 0))
-    
-    # Считаем среднюю задержку за интервал
-    interval_latencies = []
-    for interval_results_list in interval_results.values():
-        if interval_results_list:  # Проверяем, что список не пустой
-            interval_latencies.append(sum(interval_results_list) / len(interval_results_list))
-    
-    avg_latency_per_interval = sum(interval_latencies) / len(interval_latencies) if interval_latencies else 0
-    
-    return ExperimentStats(
-        current_users=current_profile["concurrent_users"],
-        current_interval=current_profile["request_interval"],
-        current_profile_index=experiment["current_profile_index"],
-        total_profiles=len(experiment["settings"]["load_profiles"]),
-        average_latency=sum(latencies) / len(results),
-        average_latency_per_interval=avg_latency_per_interval,
-        requests_count=len(results),
-        success_rate=success_count / len(results)
-    )
+    stats = await db.experiment_results.aggregate(pipeline).to_list(1)
+    if not stats:
+        return None
+        
+    stats = stats[0]
+    return {
+        "total_requests": stats["total_requests"],
+        "success_rate": stats["success_count"] / stats["total_requests"] if stats["total_requests"] > 0 else 0,
+        "average_latency": stats["total_latency"] / stats["total_requests"] if stats["total_requests"] > 0 else 0
+    }
 
 
 async def run_experiment(experiment_id: str):
@@ -339,6 +312,8 @@ async def run_experiment(experiment_id: str):
         start_time = datetime.now()
         end_time = start_time + timedelta(seconds=profile_duration)
         
+        results_buffer = []
+        
         while datetime.now() < end_time:
             tasks = []
             for _ in range(concurrent_users):
@@ -346,14 +321,18 @@ async def run_experiment(experiment_id: str):
                 tasks.append(task)
             
             results = await asyncio.gather(*tasks)
+            results_buffer.extend([r.dict() for r in results])
             
-            # Обновляем результаты в базе данных
-            await db.experiments.update_one(
-                {"_id": ObjectId(experiment_id)},
-                {"$push": {"results": {"$each": [r.dict() for r in results]}}}
-            )
+            # Сохраняем результаты чанками
+            if len(results_buffer) >= CHUNK_SIZE:
+                await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+                results_buffer = []
             
             await asyncio.sleep(request_interval)
+        
+        # Сохраняем оставшиеся результаты
+        if results_buffer:
+            await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
         
         current_profile_index += 1
         await db.experiments.update_one(
@@ -366,6 +345,18 @@ async def run_experiment(experiment_id: str):
         {"_id": ObjectId(experiment_id)},
         {"$set": {"state": ExperimentState.COMPLETED}}
     )
+
+
+@router.get("/experiment_stats")
+async def get_experiment_stats(experiment_id: str, db=Depends(get_database)):
+    """Получает статистику эксперимента."""
+    try:
+        stats = await get_experiment_stats_optimized(experiment_id, db)
+        if not stats:
+            raise HTTPException(status_code=404, detail="No results found for this experiment")
+        return stats
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("/create_experiment_group")

@@ -13,8 +13,15 @@ async def init_db():
     db = client[settings.DATABASE_NAME]
 
     # Создание индексов для оптимизации запросов
-    await db.checks.create_index("id", unique=True)
-    await db.results.create_index([("check_id", 1), ("timestamp", -1)])
+    await db.experiments.create_index("_id")
+    await db.experiment_results.create_index([
+        ("experiment_id", 1),
+        ("timestamp", -1)
+    ])
+    await db.experiment_results.create_index([
+        ("experiment_id", 1),
+        ("profile_index", 1)
+    ])
 
 
 async def get_database():
