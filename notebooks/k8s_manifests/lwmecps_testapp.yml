@@ -100,6 +100,14 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
+  affinity:
+    nodeAffinity:
+      required:
+        nodeSelectorTerm:
+          matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: ["minikube-m04"]
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs4
@@ -173,6 +181,14 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
+  affinity:
+    nodeAffinity:
+      required:
+        nodeSelectorTerm:
+          matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: ["minikube"]
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs1
@@ -246,6 +262,14 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
+  affinity:
+    nodeAffinity:
+      required:
+        nodeSelectorTerm:
+          matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: ["minikube-m02"]
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs2
@@ -319,6 +343,14 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
+  affinity:
+    nodeAffinity:
+      required:
+        nodeSelectorTerm:
+          matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: ["minikube-m03"]
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs3
