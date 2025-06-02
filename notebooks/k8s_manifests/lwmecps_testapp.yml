@@ -116,12 +116,12 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          required:
+          requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerm:
-              matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values: ["minikube-m04"]
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: ["minikube-m04"]
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
@@ -198,12 +198,12 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          required:
+          requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerm:
-              matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values: ["minikube"]
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: ["minikube"]
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
@@ -280,12 +280,12 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          required:
+          requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerm:
-              matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values: ["minikube-m02"]
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: ["minikube-m02"]
         # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
@@ -362,12 +362,12 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          required:
+          requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerm:
-              matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values: ["minikube-m03"]
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values: ["minikube-m03"]
         # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
