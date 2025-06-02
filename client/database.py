@@ -2,7 +2,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from client.config import settings
 import logging
 import asyncio
-from typing import Optional
+from typing import Optional, Any, Callable, TypeVar, Awaitable
 
 logger = logging.getLogger(__name__)
 
@@ -12,6 +12,35 @@ db = None
 MAX_RETRIES = 3
 RETRY_DELAY = 1  # seconds
 
+T = TypeVar('T')
+
+async def with_retry(operation: Callable[..., Awaitable[T]], *args: Any, **kwargs: Any) -> T:
+    """Выполняет операцию с базой данных с повторными попытками.
+    
+    Args:
+        operation: Асинхронная функция для выполнения
+        *args: Позиционные аргументы для операции
+        **kwargs: Именованные аргументы для операции
+        
+    Returns:
+        Результат операции
+        
+    Raises:
+        Exception: Если все попытки выполнения завершились ошибкой
+    """
+    last_error = None
+    for attempt in range(MAX_RETRIES):
+        try:
+            return await operation(*args, **kwargs)
+        except Exception as e:
+            last_error = e
+            if attempt == MAX_RETRIES - 1:
+                break
+            logger.warning(f"Database operation failed (attempt {attempt + 1}/{MAX_RETRIES}): {str(e)}")
+            await asyncio.sleep(RETRY_DELAY)
+    
+    logger.error(f"Database operation failed after {MAX_RETRIES} attempts: {str(last_error)}")
+    raise last_error
 
 async def init_db():
     """Инициализация подключения к базе данных с пулом соединений и таймаутами"""
