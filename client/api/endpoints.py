@@ -9,15 +9,19 @@ from client.models import (
     ExperimentGroup, GroupStats, Host
 )
 import asyncio
-from client.database import get_database
+from client.database import get_database, with_retry
 from bson import ObjectId
-from typing import List, Dict
+from typing import List, Dict, Set
 import json
+import logging
 
+logger = logging.getLogger(__name__)
 
 # Константы для оптимизации
 CHUNK_SIZE = 1000  # Размер чанка для сохранения результатов
-
+MAX_CONCURRENT_TASKS = 100  # Максимальное количество одновременных задач
+HTTP_TIMEOUT = 30.0  # Таймаут для HTTP запросов
+HTTP_LIMITS = httpx.Limits(max_keepalive_connections=50, max_connections=100)
 
 # Создаем кастомный JSON encoder для ObjectId
 class MongoJSONEncoder(json.JSONEncoder):
@@ -27,6 +31,16 @@ class MongoJSONEncoder(json.JSONEncoder):
         if isinstance(obj, datetime):
             return obj.isoformat()
         return super().default(obj)
+
+# Глобальный HTTP клиент с настройками
+http_client = httpx.AsyncClient(
+    timeout=HTTP_TIMEOUT,
+    limits=HTTP_LIMITS,
+    follow_redirects=True
+)
+
+# Сет для отслеживания активных экспериментов
+active_experiments: Set[str] = set()
 
 
 # Функция для преобразования документа MongoDB в JSON-сериализуемый формат
@@ -101,17 +115,16 @@ async def try_host(host: str, port: int, timeout: float) -> ExperimentResult:
         )
 
     try:
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            start_time = time.monotonic()
-            response = await client.get(f"http://{host}:{port}/api/latency")
-            end_time = time.monotonic()
-            latency = (end_time - start_time) * 1000
-            return ExperimentResult(
-                status_code=response.status_code,
-                latency_ms=latency,
-                timestamp=datetime.now(),
-                host_info=Host(host=host, port=port)
-            )
+        start_time = time.monotonic()
+        response = await http_client.get(f"http://{host}:{port}/api/latency")
+        end_time = time.monotonic()
+        latency = (end_time - start_time) * 1000
+        return ExperimentResult(
+            status_code=response.status_code,
+            latency_ms=latency,
+            timestamp=datetime.now(),
+            host_info=Host(host=host, port=port)
+        )
     except httpx.ConnectError as e:
         return ExperimentResult(
             status_code=0,
@@ -255,7 +268,7 @@ async def delete_experiments():
 
 
 async def save_results_chunk(db, experiment_id: str, profile_index: int, results: List[dict]):
-    """Сохраняет чанк результатов в базу данных."""
+    """Сохраняет чанк результатов в базу данных с повторными попытками."""
     if not results:
         return
         
@@ -266,7 +279,15 @@ async def save_results_chunk(db, experiment_id: str, profile_index: int, results
         "result": result
     } for result in results]
     
-    await db.experiment_results.insert_many(results_docs)
+    try:
+        await with_retry(
+            db.experiment_results.insert_many,
+            results_docs,
+            ordered=False  # Продолжать вставку даже при ошибках
+        )
+    except Exception as e:
+        logger.error(f"Error saving results chunk: {str(e)}")
+        # Продолжаем выполнение, не прерывая эксперимент
 
 
 async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
@@ -297,12 +318,20 @@ async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
 
 async def run_experiment(experiment_id: str):
     """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
+    if experiment_id in active_experiments:
+        logger.warning(f"Experiment {experiment_id} is already running")
+        return
+
+    active_experiments.add(experiment_id)
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
+    save_semaphore = asyncio.Semaphore(1)  # Семафор для сохранения результатов
+    
     try:
         db = await get_database()
-        experiment = await get_experiment_by_id(experiment_id, db)
+        experiment = await with_retry(get_experiment_by_id, experiment_id, db)
         
         if not experiment:
-            print(f"Experiment {experiment_id} not found")
+            logger.error(f"Experiment {experiment_id} not found")
             return
 
         settings = experiment["settings"]
@@ -320,56 +349,168 @@ async def run_experiment(experiment_id: str):
                 end_time = start_time + timedelta(seconds=profile_duration)
                 
                 results_buffer = []
+                last_save_time = time.monotonic()
+                next_request_time = time.monotonic()  # Время следующего запроса
+                
+                # Метрики для мониторинга
+                request_count = 0
+                success_count = 0
+                total_latency = 0
+                last_metrics_time = time.monotonic()
+                last_request_count = 0
+                
+                logger.info(f"Starting profile {current_profile_index + 1}/{len(load_profiles)} "
+                          f"with {concurrent_users} users, interval {request_interval}s, "
+                          f"duration {profile_duration}s")
                 
                 while datetime.now() < end_time:
                     try:
-                        tasks = []
-                        for _ in range(concurrent_users):
-                            task = measure_latency(settings["hosts"], settings["timeout"])
-                            tasks.append(task)
+                        current_time = time.monotonic()
                         
-                        results = await asyncio.gather(*tasks)
-                        results_buffer.extend([r.dict() for r in results])
+                        # Если пришло время для следующего запроса
+                        if current_time >= next_request_time:
+                            # Создаем задачи с таймаутом
+                            tasks = []
+                            for _ in range(concurrent_users):
+                                async with semaphore:
+                                    task = asyncio.create_task(
+                                        measure_latency(settings["hosts"], settings["timeout"])
+                                    )
+                                    tasks.append(task)
+                            
+                            # Ждем завершения всех задач с общим таймаутом
+                            done, pending = await asyncio.wait(
+                                tasks,
+                                timeout=settings["timeout"] * 2,  # Двойной таймаут для всех задач
+                                return_when=asyncio.ALL_COMPLETED
+                            )
+                            
+                            # Отменяем оставшиеся задачи
+                            for task in pending:
+                                task.cancel()
+                                try:
+                                    await task
+                                except asyncio.CancelledError:
+                                    pass
+                            
+                            # Собираем результаты
+                            valid_results = []
+                            for task in done:
+                                try:
+                                    result = await task
+                                    if result and result.status_code == 200:
+                                        valid_results.append(result.dict())
+                                        success_count += 1
+                                        total_latency += result.latency_ms
+                                except Exception as e:
+                                    logger.error(f"Error in task: {str(e)}")
+                            
+                            request_count += concurrent_users
+                            results_buffer.extend(valid_results)
+                            
+                            # Планируем следующий запрос
+                            next_request_time = current_time + request_interval
+                            
+                            # Логируем метрики каждые 5 секунд
+                            if current_time - last_metrics_time >= 5.0:
+                                current_rps = (request_count - last_request_count) / (current_time - last_metrics_time)
+                                avg_latency = total_latency / success_count if success_count > 0 else 0
+                                success_rate = (success_count / request_count * 100) if request_count > 0 else 0
+                                
+                                logger.info(
+                                    f"Profile {current_profile_index + 1} metrics: "
+                                    f"RPS={current_rps:.2f}, "
+                                    f"Success={success_rate:.1f}%, "
+                                    f"Latency={avg_latency:.1f}ms, "
+                                    f"Total requests={request_count}"
+                                )
+                                
+                                last_metrics_time = current_time
+                                last_request_count = request_count
+                            
+                            # Сохраняем результаты если:
+                            # 1. Буфер заполнен
+                            # 2. Прошло достаточно времени с последнего сохранения
+                            if (len(results_buffer) >= CHUNK_SIZE or 
+                                current_time - last_save_time >= 5.0):  # Сохраняем каждые 5 секунд
+                                async with save_semaphore:
+                                    await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+                                    results_buffer = []
+                                    last_save_time = current_time
                         
-                        # Сохраняем результаты чанками
-                        if len(results_buffer) >= CHUNK_SIZE:
-                            await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
-                            results_buffer = []
+                        # Спим до следующего запроса или 100мс, что меньше
+                        sleep_time = min(next_request_time - time.monotonic(), 0.1)
+                        if sleep_time > 0:
+                            await asyncio.sleep(sleep_time)
                         
-                        await asyncio.sleep(request_interval)
+                    except asyncio.CancelledError:
+                        logger.info(f"Experiment {experiment_id} was cancelled")
+                        raise
                     except Exception as e:
-                        print(f"Error during profile execution: {str(e)}")
+                        logger.error(f"Error during profile execution: {str(e)}")
                         continue
+                
+                # Финальные метрики профиля
+                total_time = time.monotonic() - (start_time.timestamp())
+                avg_rps = request_count / total_time if total_time > 0 else 0
+                avg_latency = total_latency / success_count if success_count > 0 else 0
+                success_rate = (success_count / request_count * 100) if request_count > 0 else 0
+                
+                logger.info(
+                    f"Profile {current_profile_index + 1} completed: "
+                    f"Avg RPS={avg_rps:.2f}, "
+                    f"Success={success_rate:.1f}%, "
+                    f"Latency={avg_latency:.1f}ms, "
+                    f"Total requests={request_count}"
+                )
                 
                 # Сохраняем оставшиеся результаты
                 if results_buffer:
-                    await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
+                    async with save_semaphore:
+                        await save_results_chunk(db, experiment_id, current_profile_index, results_buffer)
                 
                 current_profile_index += 1
-                await db.experiments.update_one(
+                await with_retry(
+                    db.experiments.update_one,
                     {"_id": ObjectId(experiment_id)},
                     {"$set": {"current_profile_index": current_profile_index}}
                 )
+            except asyncio.CancelledError:
+                raise
             except Exception as e:
-                print(f"Error processing profile {current_profile_index}: {str(e)}")
+                logger.error(f"Error processing profile {current_profile_index}: {str(e)}")
                 current_profile_index += 1
                 continue
         
         # Помечаем эксперимент как завершенный
-        await db.experiments.update_one(
+        await with_retry(
+            db.experiments.update_one,
             {"_id": ObjectId(experiment_id)},
             {"$set": {"state": ExperimentState.COMPLETED}}
         )
-    except Exception as e:
-        print(f"Fatal error in experiment {experiment_id}: {str(e)}")
+    except asyncio.CancelledError:
+        logger.info(f"Experiment {experiment_id} was cancelled")
         try:
-            # Пытаемся пометить эксперимент как завершившийся с ошибкой
-            await db.experiments.update_one(
+            await with_retry(
+                db.experiments.update_one,
                 {"_id": ObjectId(experiment_id)},
                 {"$set": {"state": ExperimentState.FAILED}}
             )
-        except:
-            pass
+        except Exception as update_error:
+            logger.error(f"Failed to update experiment state: {str(update_error)}")
+        raise
+    except Exception as e:
+        logger.error(f"Fatal error in experiment {experiment_id}: {str(e)}")
+        try:
+            await with_retry(
+                db.experiments.update_one,
+                {"_id": ObjectId(experiment_id)},
+                {"$set": {"state": ExperimentState.FAILED}}
+            )
+        except Exception as update_error:
+            logger.error(f"Failed to update experiment state: {str(update_error)}")
+    finally:
+        active_experiments.remove(experiment_id)
 
 
 @router.get("/experiment_stats")
