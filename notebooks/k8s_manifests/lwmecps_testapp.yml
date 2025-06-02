@@ -100,14 +100,6 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
-  affinity:
-    nodeAffinity:
-      required:
-        nodeSelectorTerm:
-          matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values: ["minikube-m04"]
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs4
@@ -122,6 +114,14 @@ spec:
       labels:
         app:  lwmecps-testapp-server-bs4
     spec:
+      affinity:
+        nodeAffinity:
+          required:
+            nodeSelectorTerm:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values: ["minikube-m04"]
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
@@ -181,14 +181,7 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
-  affinity:
-    nodeAffinity:
-      required:
-        nodeSelectorTerm:
-          matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values: ["minikube"]
+  
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs1
@@ -203,6 +196,14 @@ spec:
       labels:
         app:  lwmecps-testapp-server-bs1
     spec:
+      affinity:
+        nodeAffinity:
+          required:
+            nodeSelectorTerm:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values: ["minikube"]
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
@@ -262,14 +263,7 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
-  affinity:
-    nodeAffinity:
-      required:
-        nodeSelectorTerm:
-          matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values: ["minikube-m02"]
+  
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs2
@@ -284,7 +278,15 @@ spec:
       labels:
         app:  lwmecps-testapp-server-bs2
     spec:
-      # initContainers:
+      affinity:
+        nodeAffinity:
+          required:
+            nodeSelectorTerm:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values: ["minikube-m02"]
+        # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
           # - Each init container must complete successfully before the next one starts.
@@ -343,14 +345,7 @@ metadata:
   labels:
     app:  lwmecps-testapp-server
 spec:
-  affinity:
-    nodeAffinity:
-      required:
-        nodeSelectorTerm:
-          matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values: ["minikube-m03"]
+  
   selector:
     matchLabels:
       app: lwmecps-testapp-server-bs3
@@ -365,7 +360,15 @@ spec:
       labels:
         app:  lwmecps-testapp-server-bs3
     spec:
-      # initContainers:
+      affinity:
+        nodeAffinity:
+          required:
+            nodeSelectorTerm:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values: ["minikube-m03"]
+        # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
           # - Each init container must complete successfully before the next one starts.
