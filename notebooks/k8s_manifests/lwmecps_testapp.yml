@@ -117,7 +117,7 @@ spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerm:
+            nodeSelectorTerms:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     operator: In
@@ -199,7 +199,7 @@ spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerm:
+            nodeSelectorTerms:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     operator: In
@@ -281,7 +281,7 @@ spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerm:
+            nodeSelectorTerms:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     operator: In
@@ -363,7 +363,7 @@ spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerm:
+            nodeSelectorTerms:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     operator: In
