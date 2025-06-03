@@ -396,3 +396,7 @@ class LoadProfile:
 - `paused` - приостановлен
 - `completed` - завершен
 - `failed` - завершился с ошибкой
+
+
+
+
