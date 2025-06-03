@@ -11,7 +11,7 @@ from client.models import (
 import asyncio
 from client.database import get_database, with_retry
 from bson import ObjectId
-from typing import List, Dict, Set
+from typing import List, Dict, Set, Optional
 import json
 import logging
 
@@ -587,7 +587,13 @@ async def get_group_stats(group_id: str, db=Depends(get_database)):
                 success_rate=0
             )
 
-        # Получаем статистику по всем экспериментам в группе через агрегацию
+        # Получаем текущее время для расчета временных окон
+        current_time = datetime.now()
+        time_1m_ago = current_time - timedelta(minutes=1)
+        time_5m_ago = current_time - timedelta(minutes=5)
+        time_15m_ago = current_time - timedelta(minutes=15)
+
+        # Получаем статистику по всем экспериментам в группе
         pipeline = [
             {
                 "$match": {
@@ -602,6 +608,55 @@ async def get_group_stats(group_id: str, db=Depends(get_database)):
                         "$sum": {"$cond": [{"$eq": ["$result.status_code", 200]}, 1, 0]}
                     },
                     "total_latency": {"$sum": "$result.latency_ms"}
+                }
+            }
+        ]
+
+        # Получаем статистику за последние 1, 5 и 15 минут
+        pipeline_1m = [
+            {
+                "$match": {
+                    "experiment_id": {"$in": experiment_ids},
+                    "timestamp": {"$gte": time_1m_ago}
+                }
+            },
+            {
+                "$group": {
+                    "_id": None,
+                    "total_latency": {"$sum": "$result.latency_ms"},
+                    "total_requests": {"$sum": 1}
+                }
+            }
+        ]
+
+        pipeline_5m = [
+            {
+                "$match": {
+                    "experiment_id": {"$in": experiment_ids},
+                    "timestamp": {"$gte": time_5m_ago}
+                }
+            },
+            {
+                "$group": {
+                    "_id": None,
+                    "total_latency": {"$sum": "$result.latency_ms"},
+                    "total_requests": {"$sum": 1}
+                }
+            }
+        ]
+
+        pipeline_15m = [
+            {
+                "$match": {
+                    "experiment_id": {"$in": experiment_ids},
+                    "timestamp": {"$gte": time_15m_ago}
+                }
+            },
+            {
+                "$group": {
+                    "_id": None,
+                    "total_latency": {"$sum": "$result.latency_ms"},
+                    "total_requests": {"$sum": 1}
                 }
             }
         ]
@@ -646,12 +701,24 @@ async def get_group_stats(group_id: str, db=Depends(get_database)):
                 success_rate=stats["success_count"] / stats["total_requests"] if stats["total_requests"] > 0 else 0
             )
 
+        # Получаем средние задержки за разные периоды
+        stats_1m = await db.experiment_results.aggregate(pipeline_1m).to_list(1)
+        stats_5m = await db.experiment_results.aggregate(pipeline_5m).to_list(1)
+        stats_15m = await db.experiment_results.aggregate(pipeline_15m).to_list(1)
+
+        avg_latency_1m = stats_1m[0]["total_latency"] / stats_1m[0]["total_requests"] if stats_1m and stats_1m[0]["total_requests"] > 0 else 0
+        avg_latency_5m = stats_5m[0]["total_latency"] / stats_5m[0]["total_requests"] if stats_5m and stats_5m[0]["total_requests"] > 0 else 0
+        avg_latency_15m = stats_15m[0]["total_latency"] / stats_15m[0]["total_requests"] if stats_15m and stats_15m[0]["total_requests"] > 0 else 0
+
         return GroupStats(
             state=group.get("state", ExperimentState.PENDING),
             experiments_stats=experiments_stats,
             total_requests=total_requests,
             average_latency=total_latency / total_requests if total_requests > 0 else 0,
-            success_rate=total_success / total_requests if total_requests > 0 else 0
+            success_rate=total_success / total_requests if total_requests > 0 else 0,
+            avg_latency_1m=avg_latency_1m,
+            avg_latency_5m=avg_latency_5m,
+            avg_latency_15m=avg_latency_15m
         )
 
     except HTTPException:
