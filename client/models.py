@@ -136,9 +136,15 @@ class GroupStats(BaseModel):
     - total_requests: общее количество запросов
     - average_latency: среднее время ответа
     - success_rate: процент успешных запросов
+    - avg_latency_1m: средняя задержка за последнюю минуту
+    - avg_latency_5m: средняя задержка за последние 5 минут
+    - avg_latency_15m: средняя задержка за последние 15 минут
     """
     state: ExperimentState = Field(..., description="Текущее состояние")
     experiments_stats: Dict[str, ExperimentStats] = Field(..., description="Статистика по каждому эксперименту")
     total_requests: int = Field(..., description="Общее количество запросов")
     average_latency: float = Field(..., description="Среднее время ответа")
     success_rate: float = Field(..., description="Процент успешных запросов")
+    avg_latency_1m: float = Field(0.0, description="Средняя задержка за последнюю минуту")
+    avg_latency_5m: float = Field(0.0, description="Средняя задержка за последние 5 минут")
+    avg_latency_15m: float = Field(0.0, description="Средняя задержка за последние 15 минут")
