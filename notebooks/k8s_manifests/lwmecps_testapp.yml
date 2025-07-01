@@ -98,7 +98,8 @@ metadata:
   name:  lwmecps-testapp-server-bs4
   namespace: lwmecps-testapp
   labels:
-    app:  lwmecps-testapp-server
+    app: lwmecps-testapp-server-bs4
+    litmus_tag: bs4
 spec:
   selector:
     matchLabels:
@@ -112,7 +113,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server-bs4
+        app: lwmecps-testapp-server-bs4
     spec:
       affinity:
         nodeAffinity:
@@ -179,7 +180,8 @@ metadata:
   name:  lwmecps-testapp-server-bs1
   namespace: lwmecps-testapp
   labels:
-    app:  lwmecps-testapp-server
+    app: lwmecps-testapp-server-bs1
+    litmus_tag: bs1
 spec:
   
   selector:
@@ -194,7 +196,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server-bs1
+        app: lwmecps-testapp-server-bs1
     spec:
       affinity:
         nodeAffinity:
@@ -261,7 +263,8 @@ metadata:
   name:  lwmecps-testapp-server-bs2
   namespace: lwmecps-testapp
   labels:
-    app:  lwmecps-testapp-server
+    app: lwmecps-testapp-server-bs2
+    litmus_tag: bs2
 spec:
   
   selector:
@@ -276,7 +279,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server-bs2
+        app: lwmecps-testapp-server-bs2
     spec:
       affinity:
         nodeAffinity:
@@ -343,7 +346,8 @@ metadata:
   name:  lwmecps-testapp-server-bs3
   namespace: lwmecps-testapp
   labels:
-    app:  lwmecps-testapp-server
+    app: lwmecps-testapp-server-bs3
+    litmus_tag: bs3
 spec:
   
   selector:
@@ -358,7 +362,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  lwmecps-testapp-server-bs3
+        app: lwmecps-testapp-server-bs3
     spec:
       affinity:
         nodeAffinity:
