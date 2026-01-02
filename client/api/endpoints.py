@@ -41,8 +41,6 @@ http_client = httpx.AsyncClient(
 
 # Сет для отслеживания активных экспериментов
 active_experiments: Set[str] = set()
-# Блокировка для предотвращения race conditions при работе с active_experiments
-active_experiments_lock = asyncio.Lock()
 
 
 # Функция для преобразования документа MongoDB в JSON-сериализуемый формат
@@ -318,132 +316,66 @@ async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
     }
 
 
-async def check_and_update_group_status(experiment_id: str, db):
-    """Проверяет и обновляет статус группы экспериментов после завершения эксперимента.
-    
-    Находит все группы, содержащие завершившийся эксперимент, и проверяет,
-    завершились ли все эксперименты в группе. Если да, обновляет статус группы на COMPLETED.
+async def check_and_update_group_status(experiment_id: str):
+    """
+    Checks if all experiments in the group containing the given experiment_id
+    are completed or failed. If so, updates the group status to COMPLETED.
     """
     try:
-        # Находим все группы, содержащие этот эксперимент
-        # В MongoDB запрос {"experiment_ids": value} находит документы, где value содержится в массиве
-        groups = await db.groups.find({
-            "experiment_ids": experiment_id,
-            "state": ExperimentState.RUNNING  # Проверяем только запущенные группы
-        }).to_list(None)
+        db = await get_database()
         
-        if not groups:
-            logger.debug(f"No running groups found for experiment {experiment_id}")
-            return
+        # Find groups that contain this experiment
+        cursor = db.groups.find({"experiment_ids": experiment_id})
         
-        logger.info(f"Found {len(groups)} running group(s) containing experiment {experiment_id}")
-        
-        for group in groups:
-            group_id = str(group["_id"])
+        async for group in cursor:
+            group_id = group["_id"]
             experiment_ids = group.get("experiment_ids", [])
             
             if not experiment_ids:
-                logger.warning(f"Group {group_id} has no experiment_ids")
                 continue
             
-            logger.debug(f"Checking group {group_id} with {len(experiment_ids)} experiments")
+            # Convert string IDs to ObjectIds
+            exp_object_ids = []
+            for eid in experiment_ids:
+                if ObjectId.is_valid(eid):
+                    exp_object_ids.append(ObjectId(eid))
             
-            # Проверяем статусы всех экспериментов в группе
-            all_finished = True
+            if not exp_object_ids:
+                continue
+
+            # Count experiments that are NOT completed or failed
+            unfinished_count = await db.experiments.count_documents({
+                "_id": {"$in": exp_object_ids},
+                "state": {"$nin": [ExperimentState.COMPLETED, ExperimentState.FAILED]}
+            })
             
-            for exp_id in experiment_ids:
-                try:
-                    if not ObjectId.is_valid(exp_id):
-                        logger.warning(f"Invalid experiment ID format in group {group_id}: {exp_id}")
-                        all_finished = False
-                        break
-                    
-                    experiment = await db.experiments.find_one({"_id": ObjectId(exp_id)})
-                    if not experiment:
-                        logger.warning(f"Experiment {exp_id} not found in database for group {group_id}")
-                        all_finished = False
-                        break
-                    
-                    exp_state = experiment.get("state")
-                    
-                    # Если хотя бы один эксперимент еще выполняется или приостановлен, группа не завершена
-                    if exp_state in [ExperimentState.RUNNING, ExperimentState.PENDING, ExperimentState.PAUSED]:
-                        all_finished = False
-                        logger.debug(f"Group {group_id} not finished: experiment {exp_id} is {exp_state}")
-                        break
-                    
-                except Exception as exp_error:
-                    logger.error(f"Error checking experiment {exp_id} in group {group_id}: {str(exp_error)}")
-                    all_finished = False
-                    break
-            
-            # Если все эксперименты завершены (completed или failed), обновляем статус группы
-            if all_finished:
-                try:
-                    await with_retry(
-                        db.groups.update_one,
-                        {"_id": ObjectId(group_id)},
-                        {"$set": {"state": ExperimentState.COMPLETED, "updated_at": datetime.now()}}
-                    )
-                    logger.info(f"Group {group_id} status updated to COMPLETED - all experiments finished")
-                except Exception as update_error:
-                    logger.error(f"Failed to update group {group_id} status: {str(update_error)}")
-            else:
-                logger.debug(f"Group {group_id} not yet completed - some experiments still running")
-                
+            if unfinished_count == 0:
+                logger.info(f"All experiments in group {group_id} are finished. Marking group as COMPLETED.")
+                await db.groups.update_one(
+                    {"_id": group_id},
+                    {"$set": {"state": ExperimentState.COMPLETED}}
+                )
+
     except Exception as e:
-        logger.error(f"Error checking group status for experiment {experiment_id}: {str(e)}", exc_info=True)
-        # Не прерываем выполнение, если проверка группы не удалась
+        logger.error(f"Error checking group status for experiment {experiment_id}: {str(e)}")
 
 
 async def run_experiment(experiment_id: str):
     """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
-    # Используем блокировку для предотвращения race conditions
-    async with active_experiments_lock:
-        if experiment_id in active_experiments:
-            logger.warning(f"Experiment {experiment_id} is already running")
-            return
-        
-        # Проверяем статус эксперимента в БД перед запуском
-        try:
-            db = await get_database()
-            experiment = await db.experiments.find_one({"_id": ObjectId(experiment_id)})
-            if not experiment:
-                logger.error(f"Experiment {experiment_id} not found")
-                return
-            
-            # Если эксперимент уже завершен или провалился, не запускаем его снова
-            exp_state = experiment.get("state")
-            if exp_state in [ExperimentState.COMPLETED, ExperimentState.FAILED]:
-                logger.info(f"Experiment {experiment_id} is already {exp_state}, skipping")
-                return
-            
-            # Если эксперимент уже выполняется (по статусу в БД), не запускаем его снова
-            if exp_state == ExperimentState.RUNNING:
-                logger.warning(f"Experiment {experiment_id} is already running (status in DB)")
-                return
-        
-        except Exception as e:
-            logger.error(f"Error checking experiment {experiment_id} status: {str(e)}")
-            return
-        
-        # Добавляем в активные эксперименты только после всех проверок
-        active_experiments.add(experiment_id)
-    
-    # Инициализация переменных вне блока блокировки
+    if experiment_id in active_experiments:
+        logger.warning(f"Experiment {experiment_id} is already running")
+        return
+
+    active_experiments.add(experiment_id)
     semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
     save_semaphore = asyncio.Semaphore(1)  # Семафор для сохранения результатов
     
     try:
-        # Получаем эксперимент еще раз для работы
         db = await get_database()
-        experiment = await with_retry(_get_experiment_from_db, experiment_id, db)
+        experiment = await with_retry(get_experiment_by_id, experiment_id, db)
         
         if not experiment:
             logger.error(f"Experiment {experiment_id} not found")
-            # Удаляем из активных, если эксперимент не найден
-            async with active_experiments_lock:
-                active_experiments.discard(experiment_id)
             return
 
         settings = experiment["settings"]
@@ -622,18 +554,9 @@ async def run_experiment(experiment_id: str):
         except Exception as update_error:
             logger.error(f"Failed to update experiment state: {str(update_error)}")
     finally:
-        # Проверяем и обновляем статус группы экспериментов после завершения эксперимента
-        # Это выполнится независимо от того, как завершился эксперимент (успешно, с ошибкой или отменен)
-        if db is not None:
-            try:
-                await check_and_update_group_status(experiment_id, db)
-            except Exception as group_check_error:
-                # Логируем ошибку, но не прерываем выполнение
-                logger.error(f"Failed to check group status in finally block: {str(group_check_error)}")
-        
-        # Удаляем эксперимент из активных с блокировкой
-        async with active_experiments_lock:
-            active_experiments.discard(experiment_id)  # Используем discard вместо remove для безопасности
+        active_experiments.remove(experiment_id)
+        # Check and update group status
+        await check_and_update_group_status(experiment_id)
 
 
 @router.get("/experiment_stats")
@@ -887,65 +810,12 @@ async def manage_group(
     if not group:
         raise HTTPException(status_code=404, detail="Group not found")
     
-    current_group_state = group.get("state", ExperimentState.PENDING)
-    
     new_state = ""
     if state == "start":
-        # Проверяем, не завершена ли уже группа
-        if current_group_state == ExperimentState.COMPLETED:
-            logger.warning(f"Group {group_id} is already completed, cannot start")
-            raise HTTPException(
-                status_code=400,
-                detail="Group is already completed and cannot be started again"
-            )
-        
-        # Проверяем, не запущена ли уже группа
-        if current_group_state == ExperimentState.RUNNING:
-            logger.warning(f"Group {group_id} is already running")
-            # Возвращаем текущий статус без повторного запуска
-            return {"_id": group_id, "state": current_group_state, "message": "Group is already running"}
-        
         new_state = ExperimentState.RUNNING
-        
-        # Запускаем только те эксперименты, которые еще не завершены и не запущены
-        experiment_ids = group.get("experiment_ids", [])
-        started_count = 0
-        skipped_count = 0
-        
-        for exp_id in experiment_ids:
-            try:
-                # Проверяем статус эксперимента перед запуском
-                experiment = await db.experiments.find_one({"_id": ObjectId(exp_id)})
-                if not experiment:
-                    logger.warning(f"Experiment {exp_id} not found, skipping")
-                    skipped_count += 1
-                    continue
-                
-                exp_state = experiment.get("state")
-                
-                # Пропускаем уже завершенные или провалившиеся эксперименты
-                if exp_state in [ExperimentState.COMPLETED, ExperimentState.FAILED]:
-                    logger.debug(f"Experiment {exp_id} is already {exp_state}, skipping")
-                    skipped_count += 1
-                    continue
-                
-                # Проверяем, не запущен ли уже эксперимент
-                async with active_experiments_lock:
-                    if exp_id in active_experiments:
-                        logger.debug(f"Experiment {exp_id} is already running, skipping")
-                        skipped_count += 1
-                        continue
-                
-                # Запускаем эксперимент
-                asyncio.create_task(run_experiment(exp_id))
-                started_count += 1
-                
-            except Exception as e:
-                logger.error(f"Error starting experiment {exp_id}: {str(e)}")
-                skipped_count += 1
-        
-        logger.info(f"Group {group_id}: started {started_count} experiments, skipped {skipped_count}")
-        
+        # Запускаем все эксперименты в группе
+        for exp_id in group["experiment_ids"]:
+            asyncio.create_task(run_experiment(exp_id))
     elif state == "pause":
         new_state = ExperimentState.PAUSED
     elif state == "stop":
@@ -953,7 +823,7 @@ async def manage_group(
     
     await db.groups.update_one(
         {"_id": ObjectId(group_id)},
-        {"$set": {"state": new_state, "updated_at": datetime.now()}}
+        {"$set": {"state": new_state}}
     )
     
     return {"_id": group_id, "state": new_state}
