@@ -316,6 +316,50 @@ async def get_experiment_stats_optimized(experiment_id: str, db) -> Dict:
     }
 
 
+async def check_and_update_group_status(experiment_id: str):
+    """
+    Checks if all experiments in the group containing the given experiment_id
+    are completed or failed. If so, updates the group status to COMPLETED.
+    """
+    try:
+        db = await get_database()
+        
+        # Find groups that contain this experiment
+        cursor = db.groups.find({"experiment_ids": experiment_id})
+        
+        async for group in cursor:
+            group_id = group["_id"]
+            experiment_ids = group.get("experiment_ids", [])
+            
+            if not experiment_ids:
+                continue
+            
+            # Convert string IDs to ObjectIds
+            exp_object_ids = []
+            for eid in experiment_ids:
+                if ObjectId.is_valid(eid):
+                    exp_object_ids.append(ObjectId(eid))
+            
+            if not exp_object_ids:
+                continue
+
+            # Count experiments that are NOT completed or failed
+            unfinished_count = await db.experiments.count_documents({
+                "_id": {"$in": exp_object_ids},
+                "state": {"$nin": [ExperimentState.COMPLETED, ExperimentState.FAILED]}
+            })
+            
+            if unfinished_count == 0:
+                logger.info(f"All experiments in group {group_id} are finished. Marking group as COMPLETED.")
+                await db.groups.update_one(
+                    {"_id": group_id},
+                    {"$set": {"state": ExperimentState.COMPLETED}}
+                )
+
+    except Exception as e:
+        logger.error(f"Error checking group status for experiment {experiment_id}: {str(e)}")
+
+
 async def run_experiment(experiment_id: str):
     """Фоновая задача для выполнения эксперимента с динамической нагрузкой."""
     if experiment_id in active_experiments:
@@ -511,6 +555,8 @@ async def run_experiment(experiment_id: str):
             logger.error(f"Failed to update experiment state: {str(update_error)}")
     finally:
         active_experiments.remove(experiment_id)
+        # Check and update group status
+        await check_and_update_group_status(experiment_id)
 
 
 @router.get("/experiment_stats")
