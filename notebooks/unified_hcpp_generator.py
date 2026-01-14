@@ -87,7 +87,7 @@ class Config:
     
     # === ПАРАМЕТРЫ ВИЗУАЛИЗАЦИИ ===
     COLORS = ['blue', 'green', 'red', 'purple', 'orange', 'brown']
-    FIGURE_SIZE_NETWORK = (8, 8)  # размер графика для отображения сети
+    FIGURE_SIZE_NETWORK = (6, 6)  # размер графика для отображения сети
     FIGURE_SIZE_COMPARISON = (14, 6)  # размер графика для сравнения сетей
     FIGURE_SIZE_LOAD_ANALYSIS = (12, 9)  # размер графика для анализа нагрузки
     FIGURE_SIZE_TIME_SERIES = (10, 6)  # размер графика для временных рядов
@@ -102,12 +102,13 @@ class Config:
     # === ПАРАМЕТРЫ ПРОФИЛЕЙ НАГРУЗКИ ===
     LOAD_PROFILE_PATHS = {
         'default': 'test_env/load_profile_with_deviation.json',
+        '24h': 'test_env/load_profile_with_deviation_24h.json',
         '12h': 'test_env/load_profile_with_deviation_12h.json',
         '6h': 'test_env/load_profile_with_deviation_6h.json'
     }
     
     # Параметры синтетического профиля нагрузки
-    SYNTHETIC_LOAD_DURATION_HOURS = 12  # продолжительность синтетического профиля
+    SYNTHETIC_LOAD_DURATION_HOURS = 24  # продолжительность синтетического профиля
     SYNTHETIC_LOAD_INTERVAL_MINUTES = 10  # интервал между записями
     SYNTHETIC_LOAD_BASE = 60  # базовая нагрузка
     SYNTHETIC_LOAD_VARIATION = 40  # амплитуда вариации нагрузки
@@ -115,8 +116,8 @@ class Config:
     SYNTHETIC_LOAD_MAX = 120  # максимальная нагрузка
     
     # === ПАРАМЕТРЫ АНАЛИЗА ===
-    DEFAULT_MAX_TIME_POINTS = 100  # максимальное количество точек для анализа временных рядов
-    COMPARISON_MAX_TIME_POINTS = 4200  # максимальное количество точек для сравнения
+    DEFAULT_MAX_TIME_POINTS = 1000  # максимальное количество точек для анализа временных рядов
+    COMPARISON_MAX_TIME_POINTS = 8600  # максимальное количество точек для сравнения
     HISTOGRAM_BINS = 20  # количество бинов для гистограмм
     
     # === ПАРАМЕТРЫ ГЕНЕРАЦИИ SEED ===
@@ -136,7 +137,10 @@ class Config:
     @classmethod
     def get_load_profile_path(cls, profile_type='default'):
         """Возвращает путь к профилю нагрузки"""
-        return cls.LOAD_PROFILE_PATHS.get(profile_type, cls.LOAD_PROFILE_PATHS['default'])
+        relative_path = cls.LOAD_PROFILE_PATHS.get(profile_type, cls.LOAD_PROFILE_PATHS['default'])
+        # Получаем абсолютный путь относительно расположения скрипта
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        return os.path.join(script_dir, relative_path)
     
     @classmethod
     def get_color_for_station(cls, station_idx):
@@ -214,7 +218,7 @@ class NetworkUtils:
         return np.array(users)
     
     @staticmethod
-    def plot_network_base(ax, base_stations, users=None, title="Network", 
+    def plot_network_base(ax, base_stations, users=None, title="Сеть", 
                          area_size=None, show_voronoi=True):
         """
         Базовая функция для отображения сети - убирает дублирование визуализации
@@ -233,22 +237,22 @@ class NetworkUtils:
         
         # Базовые станции
         ax.scatter(base_stations[:, 0], base_stations[:, 1], 
-                   c='red', marker='x', s=100, linewidths=3, label='Base Stations')
+                   c='red', marker='x', s=100, linewidths=3, label='Базовые станции')
         
         # Подписи станций
         for i, (x, y) in enumerate(base_stations):
             ax.text(x, y+0.03, f'BS{i+1}', ha='center', va='bottom', 
-                    fontsize=10, fontweight='bold')
+                    fontsize=13, fontweight='bold')
         
         # Пользователи
         if users is not None:
             ax.scatter(users[:, 0], users[:, 1], 
-                       alpha=0.5, s=10, c='blue', label='Users')
+                       alpha=0.5, s=10, c='blue', label='Пользователи')
         
-        ax.set_title(title, fontsize=14, fontweight='bold')
-        ax.set_xlabel('X coordinate (km)')
-        ax.set_ylabel('Y coordinate (km)')
-        ax.legend()
+        ax.set_title(title, fontsize=18, fontweight='bold')
+        ax.set_xlabel('Координата X (км)', fontsize=17)
+        ax.set_ylabel('Координата Y (км)', fontsize=17)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
         ax.set_aspect('equal')
         ax.set_xlim(0, area_size)
@@ -446,7 +450,7 @@ class UnifiedHCPPGenerator:
         )
         return self.users
 
-    def visualize_distribution(self, show_users=True, title="HCPP Base Station Distribution"):
+    def visualize_distribution(self, show_users=True, title="Распределение базовых станций HCPP"):
         if self.base_stations is None:
             raise ValueError("Base stations not generated yet")
 
@@ -461,6 +465,7 @@ class UnifiedHCPPGenerator:
                                      title, plot_area)
         
         plt.tight_layout()
+        plt.savefig('hcpp_network_distribution.png', dpi=300, bbox_inches='tight')
         plt.show()
 
     def set_region(self, region_name):
@@ -782,49 +787,50 @@ class UnifiedHCPPGenerator:
         
         # Пространственное распределение
         ax1.scatter(coords[:, 0], coords[:, 1], alpha=0.6, color='blue')
-        ax1.set_title('Spatial Distribution')
-        ax1.set_xlabel('X coordinate (km)')
-        ax1.set_ylabel('Y coordinate (km)')
+        ax1.set_title('Пространственное распределение', fontsize=18)
+        ax1.set_xlabel('Координата X (км)', fontsize=17)
+        ax1.set_ylabel('Координата Y (км)', fontsize=17)
         ax1.grid(True, alpha=0.3)
         
         # Гистограмма расстояний
         nn_distances = self._calculate_nearest_neighbor_distances(coords)
         ax2.hist(nn_distances, bins=30, alpha=0.7, color='green')
         ax2.axvline(patterns['mean_nn_distance'], color='red', 
-                   linestyle='--', label=f'Mean: {patterns["mean_nn_distance"]:.2f} km')
-        ax2.set_title('Nearest Neighbor Distances')
-        ax2.set_xlabel('Distance (km)')
-        ax2.set_ylabel('Frequency')
-        ax2.legend()
+                   linestyle='--', label=f'Среднее: {patterns["mean_nn_distance"]:.2f} км')
+        ax2.set_title('Расстояния до ближайших соседей', fontsize=18)
+        ax2.set_xlabel('Расстояние (км)', fontsize=17)
+        ax2.set_ylabel('Частота', fontsize=17)
+        ax2.legend(fontsize=15)
         
         # Кластерный анализ
         clustering = DBSCAN(eps=Config.CLUSTERING_EPS, min_samples=Config.CLUSTERING_MIN_SAMPLES).fit(coords)
         colors = plt.cm.tab10(clustering.labels_)
         ax3.scatter(coords[:, 0], coords[:, 1], c=colors, alpha=0.6)
-        ax3.set_title('Cluster Analysis (DBSCAN)')
-        ax3.set_xlabel('X coordinate (km)')
-        ax3.set_ylabel('Y coordinate (km)')
+        ax3.set_title('Кластерный анализ (DBSCAN)', fontsize=18)
+        ax3.set_xlabel('Координата X (км)', fontsize=17)
+        ax3.set_ylabel('Координата Y (км)', fontsize=17)
         
         # Статистика
         ax4.axis('off')
-        stats_text = f"""Analysis Statistics:
-Total stations: {len(coords)}
-Density: {patterns['density']:.3f} stations/km²
-Mean distance: {patterns['mean_nn_distance']:.3f} km
-Clusters: {patterns['clustering_stats']['n_clusters']}
-In clusters: {patterns['clustering_stats']['cluster_ratio']*100:.1f}%
-Noise: {(1-patterns['clustering_stats']['cluster_ratio'])*100:.1f}%
+        stats_text = f"""Статистика анализа:
+Всего станций: {len(coords)}
+Плотность: {patterns['density']:.3f} станций/км²
+Среднее расстояние: {patterns['mean_nn_distance']:.3f} км
+Кластеры: {patterns['clustering_stats']['n_clusters']}
+В кластерах: {patterns['clustering_stats']['cluster_ratio']*100:.1f}%
+Шум: {(1-patterns['clustering_stats']['cluster_ratio'])*100:.1f}%
 
-Recommended HCPP params:
-min_distance: {patterns['recommended_hcpp_params']['min_distance']:.3f} km
+Рекомендуемые параметры HCPP:
+min_distance: {patterns['recommended_hcpp_params']['min_distance']:.3f} км
 intensity_lambda: {patterns['recommended_hcpp_params']['intensity_lambda']:.3f}
 beta: {patterns['recommended_hcpp_params']['beta']:.3f}"""
         
-        ax4.text(0.05, 0.95, stats_text, transform=ax4.transAxes, fontsize=11,
+        ax4.text(0.05, 0.95, stats_text, transform=ax4.transAxes, fontsize=14,
                 verticalalignment='top', fontfamily='monospace',
                 bbox=dict(boxstyle='round', facecolor='lightgray', alpha=0.8))
         
         plt.tight_layout()
+        plt.savefig('spatial_analysis.png', dpi=300, bbox_inches='tight')
         plt.show()
 
     def calibrate_hcpp_params(self, use_opencellid=True, plot=True):
@@ -865,18 +871,19 @@ beta: {patterns['recommended_hcpp_params']['beta']:.3f}"""
         x = np.arange(len(params))
         width = 0.35
         
-        ax.bar(x - width/2, standard_values, width, label='Standard', alpha=0.8)
-        ax.bar(x + width/2, optimized_values, width, label='Optimized', alpha=0.8)
+        ax.bar(x - width/2, standard_values, width, label='Стандартные', alpha=0.8)
+        ax.bar(x + width/2, optimized_values, width, label='Оптимизированные', alpha=0.8)
         
-        ax.set_xlabel('Parameters')
-        ax.set_ylabel('Values')
-        ax.set_title('HCPP Parameter Comparison')
+        ax.set_xlabel('Параметры', fontsize=17)
+        ax.set_ylabel('Значения', fontsize=17)
+        ax.set_title('Сравнение параметров HCPP', fontsize=18)
         ax.set_xticks(x)
-        ax.set_xticklabels(params)
-        ax.legend()
+        ax.set_xticklabels(params, fontsize=17)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
         
         plt.tight_layout()
+        plt.savefig('parameter_comparison.png', dpi=300, bbox_inches='tight')
         plt.show()
 
 
@@ -1030,10 +1037,10 @@ class LoadProfileUserDistribution:
         
         # Базовые станции
         ax.scatter(base_stations[:, 0], base_stations[:, 1], 
-                   c='red', marker='x', s=100, label='Base Stations')
+                   c='red', marker='x', s=100, label='Базовые станции')
         
         for i, station_pos in enumerate(base_stations):
-            ax.text(station_pos[0], station_pos[1] + 0.1, f"BS {i+1}", fontsize=9, ha='center')
+            ax.text(station_pos[0], station_pos[1] + 0.1, f"BS {i+1}", fontsize=12, ha='center')
         
         # Пользователи по станциям
         for station_idx, users in distribution.items():
@@ -1042,16 +1049,18 @@ class LoadProfileUserDistribution:
                 color = NetworkUtils.get_color_for_station(station_idx)
                 ax.scatter(users[:, 0], users[:, 1], 
                            alpha=0.5, s=10, c=color,
-                           label=f'Users on BS{station_idx}')
+                           label=f'Пользователи на BS{station_idx}')
         
         ax.set_xlim(0, plot_area)
         ax.set_ylim(0, plot_area)
-        ax.set_title(f"User Distribution at t={timestamp}s (Total: {len(all_users)})")
-        ax.set_xlabel("X (km)")
-        ax.set_ylabel("Y (km)")
-        ax.legend()
+        all_users = sum([len(users) for users in distribution.values()])
+        ax.set_title(f"Распределение пользователей при t={timestamp}с (Всего: {all_users})", fontsize=18)
+        ax.set_xlabel("X (км)", fontsize=17)
+        ax.set_ylabel("Y (км)", fontsize=17)
+        ax.legend(fontsize=15)
         ax.grid(True)
         plt.tight_layout()
+        plt.savefig('user_distribution.png', dpi=300, bbox_inches='tight')
         plt.show()
 
 
@@ -1060,7 +1069,7 @@ class NetworkComparator:
     
     @staticmethod
     def compare_hcpp_networks(standard_generator, optimized_generator, load_dist, 
-                             fixed_seed=None, title_prefix="HCPP Network Comparison"):
+                             fixed_seed=None, title_prefix="Сравнение сетей HCPP"):
         """Сравнивает стандартную и оптимизированную сети HCPP"""
         
         if fixed_seed is None:
@@ -1074,15 +1083,15 @@ class NetworkComparator:
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=Config.FIGURE_SIZE_COMPARISON)
         
         # Стандартная сеть
-        NetworkComparator._plot_network_on_axis(ax1, standard_stations, "Standard HCPP", 
+        NetworkComparator._plot_network_on_axis(ax1, standard_stations, "", 
                                                standard_generator, load_dist, fixed_seed)
         
         # Оптимизированная сеть
-        NetworkComparator._plot_network_on_axis(ax2, optimized_stations, "Optimized HCPP", 
+        NetworkComparator._plot_network_on_axis(ax2, optimized_stations, "Оптимизированный HCPP", 
                                                optimized_generator, load_dist, fixed_seed)
         
-        plt.suptitle(title_prefix, fontsize=16, fontweight='bold')
         plt.tight_layout()
+        plt.savefig('network_comparison.png', dpi=300, bbox_inches='tight')
         plt.show()
         
         # Статистика сравнения
@@ -1118,33 +1127,52 @@ class NetworkComparator:
         
         if fixed_seed is None:
             fixed_seed = Config.DEFAULT_SEED
-        if max_time_points is None:
-            max_time_points = Config.COMPARISON_MAX_TIME_POINTS
+        # Если max_time_points=None, используем все точки (передаем None дальше)
         
         # ИСПРАВЛЕНО: используем разные seed для разных сетей
+        total_profile_points = len(load_dist.load_profile) if load_dist.load_profile else 0
+        print(f"Всего точек в профиле: {total_profile_points}")
+        if max_time_points is None:
+            print(f"Используем все {total_profile_points} точек профиля")
+        else:
+            print(f"Ограничение: максимум {max_time_points} точек")
+        
         standard_load_data = NetworkComparator._collect_load_data(
             standard_stations, load_dist, fixed_seed, max_time_points)
         optimized_load_data = NetworkComparator._collect_load_data(
             optimized_stations, load_dist, fixed_seed + Config.SEED_OFFSET, max_time_points)
         
-        # Визуализация сравнения
-        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=Config.FIGURE_SIZE_LOAD_ANALYSIS)
+        print(f"Обработано точек для стандартной сети: {len(standard_load_data['timestamps'])}")
+        print(f"Обработано точек для оптимизированной сети: {len(optimized_load_data['timestamps'])}")
         
-        # График нагрузки по времени для стандартной сети
-        NetworkComparator._plot_load_over_time(ax1, standard_load_data, "Standard HCPP Load Distribution")
+        # Визуализация сравнения - отдельные картинки
         
-        # График нагрузки по времени для оптимизированной сети
-        NetworkComparator._plot_load_over_time(ax2, optimized_load_data, "Optimized HCPP Load Distribution")
-        
-        # Гистограммы распределения нагрузки
-        NetworkComparator._plot_load_histograms(ax3, standard_load_data, optimized_load_data)
-        
-        # Статистика сравнения
-        NetworkComparator._plot_load_statistics(ax4, standard_load_data, optimized_load_data)
-        
-        plt.suptitle("Load Distribution Comparison: Standard vs Optimized HCPP", 
-                     fontsize=16, fontweight='bold')
+        # Картинка 1: График нагрузки по времени для стандартной сети
+        fig1, ax1 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_TIME_SERIES)
+        NetworkComparator._plot_load_over_time(ax1, standard_load_data, "")
         plt.tight_layout()
+        plt.savefig('load_distribution_standard.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        # Картинка 2: График нагрузки по времени для оптимизированной сети
+        fig2, ax2 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_TIME_SERIES)
+        NetworkComparator._plot_load_over_time(ax2, optimized_load_data, "")
+        plt.tight_layout()
+        plt.savefig('load_distribution_optimized.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        # Картинка 3: Гистограммы распределения нагрузки
+        fig3, ax3 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_PARAMS)
+        NetworkComparator._plot_load_histograms(ax3, standard_load_data, optimized_load_data)
+        plt.tight_layout()
+        plt.savefig('load_distribution_histograms.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        # Картинка 4: Статистика сравнения
+        fig4, ax4 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_PARAMS)
+        NetworkComparator._plot_load_statistics(ax4, standard_load_data, optimized_load_data)
+        plt.tight_layout()
+        plt.savefig('load_distribution_statistics.png', dpi=300, bbox_inches='tight')
         plt.show()
         
         # Численная статистика
@@ -1162,10 +1190,12 @@ class NetworkComparator:
         
         if max_time_points is None:
             step = 1
-            time_indices = range(0, total_points)
+            time_indices = list(range(0, total_points))
+            print(f"  Используем все {len(time_indices)} точек (шаг=1)")
         else:
             step = max(1, total_points // max_time_points)
-            time_indices = range(0, total_points, step)
+            time_indices = list(range(0, total_points, step))
+            print(f"  Ограничение: используем {len(time_indices)} из {total_points} точек (шаг={step})")
         
         timestamps = []
         users_per_station = {i: [] for i in range(1, len(base_stations) + 1)}
@@ -1181,6 +1211,7 @@ class NetworkComparator:
                     users_per_station[station_idx].append(user_count)
         
         hours = [t / 3600 for t in timestamps]
+        print(f"  Обработано {len(hours)} временных точек")
         
         return {
             'timestamps': hours,
@@ -1196,13 +1227,13 @@ class NetworkComparator:
             user_counts = load_data['users_per_station'][station_idx]
             
             ax.plot(load_data['timestamps'], user_counts,
-                    label=f'BS{station_idx} (avg: {np.mean(user_counts):.1f})',
-                    color=color, linewidth=2, alpha=0.8)
+                    label=f'BS{station_idx} (среднее: {np.mean(user_counts):.1f})',
+                    color=color, linewidth=1, alpha=0.8, markersize=0.5)
         
-        ax.set_xlabel('Time (hours)')
-        ax.set_ylabel('Number of Users')
-        ax.set_title(title)
-        ax.legend()
+        ax.set_xlabel('Время (часы)', fontsize=17)
+        ax.set_ylabel('Количество пользователей', fontsize=17)
+        ax.set_title(title, fontsize=18)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
     
     @staticmethod
@@ -1218,13 +1249,13 @@ class NetworkComparator:
             optimized_loads.extend(optimized_data['users_per_station'][station_idx])
         
         # Строим гистограммы
-        ax.hist(standard_loads, bins=Config.HISTOGRAM_BINS, alpha=0.6, label='Standard HCPP', color='blue')
-        ax.hist(optimized_loads, bins=Config.HISTOGRAM_BINS, alpha=0.6, label='Optimized HCPP', color='red')
+        ax.hist(standard_loads, bins=Config.HISTOGRAM_BINS, alpha=0.6, label='Стандартный HCPP', color='blue')
+        ax.hist(optimized_loads, bins=Config.HISTOGRAM_BINS, alpha=0.6, label='Оптимизированный HCPP', color='red')
         
-        ax.set_xlabel('Users per Station')
-        ax.set_ylabel('Frequency')
-        ax.set_title('Load Distribution Comparison')
-        ax.legend()
+        ax.set_xlabel('Пользователей на станцию', fontsize=17)
+        ax.set_ylabel('Частота', fontsize=17)
+        ax.set_title('Сравнение распределения нагрузки', fontsize=18)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
     
     @staticmethod
@@ -1261,15 +1292,15 @@ class NetworkComparator:
         x = np.arange(len(stations))
         width = 0.35
         
-        ax.bar(x - width/2, standard_means, width, label='Standard', alpha=0.8, color='blue')
-        ax.bar(x + width/2, optimized_means, width, label='Optimized', alpha=0.8, color='red')
+        ax.bar(x - width/2, standard_means, width, label='Стандартная', alpha=0.8, color='blue')
+        ax.bar(x + width/2, optimized_means, width, label='Оптимизированная', alpha=0.8, color='red')
         
-        ax.set_xlabel('Base Stations')
-        ax.set_ylabel('Average Users')
-        ax.set_title('Average Load per Station')
+        ax.set_xlabel('Базовые станции', fontsize=17)
+        ax.set_ylabel('Среднее количество пользователей', fontsize=17)
+        ax.set_title('Средняя нагрузка на станцию', fontsize=18)
         ax.set_xticks(x)
-        ax.set_xticklabels(stations)
-        ax.legend()
+        ax.set_xticklabels(stations, fontsize=17)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
     
     @staticmethod
@@ -1351,15 +1382,16 @@ def plot_users_per_station_over_time(network, load_profile_dist, base_stations,
         user_counts = users_per_station[station_idx]
         
         plt.plot(hours, user_counts, 
-                label=f'BS{station_idx} (avg: {np.mean(user_counts):.1f})',
+                label=f'BS{station_idx} (среднее: {np.mean(user_counts):.1f})',
                 color=color, linewidth=1)
     
-    plt.xlabel('Time (hours)')
-    plt.ylabel('Number of Users')
-    plt.title('Number of Users per Base Station Over Time')
-    plt.legend()
+    plt.xlabel('Время (часы)', fontsize=17)
+    plt.ylabel('Количество пользователей', fontsize=17)
+    plt.title('Количество пользователей на базовой станции во времени', fontsize=18)
+    plt.legend(fontsize=15)
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
+    plt.savefig('users_per_station_over_time.png', dpi=300, bbox_inches='tight')
     plt.show()
     
     print("Station statistics:")
@@ -1459,7 +1491,7 @@ def compare_standard_vs_optimized_hcpp(region_name=None, radio_type='LTE', show_
     
     # Создаем распределение пользователей
     load_dist = LoadProfileUserDistribution(
-        Config.get_load_profile_path('default'),
+        Config.get_load_profile_path('24h'),
         create_if_missing=True
     )
     
@@ -1478,7 +1510,8 @@ def compare_standard_vs_optimized_hcpp(region_name=None, radio_type='LTE', show_
         
         NetworkComparator.compare_load_distributions(
             standard_stations, optimized_stations, load_dist,
-            fixed_seed=Config.DEFAULT_SEED
+            fixed_seed=Config.DEFAULT_SEED,
+            max_time_points=None  # Используем все точки для 24 часов
         )
     
     print(f"\nКалиброванные параметры для {region_name}:")
@@ -1582,17 +1615,16 @@ def demonstrate_opencellid_calibration_impact(region_name=None, show_plots=True)
             
             # Стандартная сеть
             NetworkUtils.plot_network_base(ax1, standard_stations, None, 
-                                         "Standard HCPP\n(Default Parameters)", 
+                                         "Стандартный HCPP\n(Параметры по умолчанию)", 
                                          getattr(standard_generator, 'effective_side_length', standard_generator.area_size))
             
             # Оптимизированная сеть
             NetworkUtils.plot_network_base(ax2, optimized_stations, None, 
-                                         f"Optimized HCPP\n(OpenCellID Calibrated - {region_name})", 
+                                         f"Оптимизированный HCPP\n(Калибровка OpenCellID - {region_name})", 
                                          getattr(optimized_generator, 'effective_side_length', optimized_generator.area_size))
             
-            plt.suptitle(f"Impact of OpenCellID Calibration: {region_name}", 
-                        fontsize=16, fontweight='bold')
             plt.tight_layout()
+            plt.savefig(f'opencellid_calibration_impact_{region_name}.png', dpi=300, bbox_inches='tight')
             plt.show()
             
             # График сравнения параметров
@@ -1609,18 +1641,19 @@ def demonstrate_opencellid_calibration_impact(region_name=None, show_plots=True)
             x = np.arange(len(params))
             width = 0.35
             
-            ax.bar(x - width/2, standard_values, width, label='Standard', alpha=0.8, color='blue')
-            ax.bar(x + width/2, optimized_values, width, label=f'Optimized ({region_name})', alpha=0.8, color='red')
+            ax.bar(x - width/2, standard_values, width, label='Стандартные', alpha=0.8, color='blue')
+            ax.bar(x + width/2, optimized_values, width, label=f'Оптимизированные ({region_name})', alpha=0.8, color='red')
             
-            ax.set_xlabel('HCPP Parameters')
-            ax.set_ylabel('Values')
-            ax.set_title('Parameter Comparison: Standard vs OpenCellID Calibrated')
+            ax.set_xlabel('Параметры HCPP', fontsize=17)
+            ax.set_ylabel('Значения', fontsize=17)
+            ax.set_title('Сравнение параметров: Стандартные vs Калибровка OpenCellID', fontsize=18)
             ax.set_xticks(x)
-            ax.set_xticklabels(params)
-            ax.legend()
+            ax.set_xticklabels(params, fontsize=17)
+            ax.legend(fontsize=15)
             ax.grid(True, alpha=0.3)
             
             plt.tight_layout()
+            plt.savefig(f'parameter_comparison_opencellid_{region_name}.png', dpi=300, bbox_inches='tight')
             plt.show()
         
         print(f"\n=== Демонстрация завершена ===")
@@ -1675,17 +1708,18 @@ if __name__ == "__main__":
         x = np.arange(len(params))
         width = 0.35
         
-        ax.bar(x - width/2, standard_values, width, label='Standard', alpha=0.8, color='blue')
-        ax.bar(x + width/2, optimized_values, width, label=f'Optimized ({region})', alpha=0.8, color='red')
+        ax.bar(x - width/2, standard_values, width, label='Стандартные', alpha=0.8, color='blue')
+        ax.bar(x + width/2, optimized_values, width, label=f'Оптимизированные ({region})', alpha=0.8, color='red')
         
-        ax.set_xlabel('HCPP Parameters')
-        ax.set_ylabel('Values')
-        ax.set_title('HCPP Parameter Comparison: Standard vs Calibrated')
+        ax.set_xlabel('Параметры HCPP', fontsize=17)
+        ax.set_ylabel('Значения', fontsize=17)
+        ax.set_title('Сравнение параметров HCPP: Стандартные vs Калиброванные', fontsize=18)
         ax.set_xticks(x)
-        ax.set_xticklabels(params)
-        ax.legend()
+        ax.set_xticklabels(params, fontsize=17)
+        ax.legend(fontsize=15)
         ax.grid(True, alpha=0.3)
         plt.tight_layout()
+        plt.savefig('parameter_comparison_main.png', dpi=300, bbox_inches='tight')
         plt.show()
 
         # --- Шаг 4: Генерация сетей и пользователей---
@@ -1698,25 +1732,30 @@ if __name__ == "__main__":
         
         # --- Шаг 5: Визуальное сравнение сетей ---
         print("\n4. Визуальное сравнение сгенерированных сетей...")
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=Config.FIGURE_SIZE_COMPARISON)
         
+        # Первая картинка: Стандартная сеть
+        fig1, ax1 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_NETWORK)
         plot_area_std = getattr(standard_generator, 'effective_side_length', standard_generator.area_size)
-        NetworkUtils.plot_network_base(ax1, standard_stations, standard_users, "Standard HCPP", plot_area_std)
+        NetworkUtils.plot_network_base(ax1, standard_stations, standard_users, "", plot_area_std)
+        plt.tight_layout()
+        plt.savefig('standard_hcpp_network.png', dpi=300, bbox_inches='tight')
+        plt.show()
         
+        # Вторая картинка: Оптимизированная сеть
+        fig2, ax2 = plt.subplots(1, 1, figsize=Config.FIGURE_SIZE_NETWORK)
         plot_area_opt = getattr(optimized_generator, 'effective_side_length', optimized_generator.area_size)
-        NetworkUtils.plot_network_base(ax2, optimized_stations, optimized_users, f"Optimized HCPP ({region})", plot_area_opt)
-        
-        plt.suptitle(f"Impact of OpenCellID Calibration: {region}", fontsize=16, fontweight='bold')
-        # Исправляем "уплывшие" заголовки, давая место для suptitle
-        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+        NetworkUtils.plot_network_base(ax2, optimized_stations, optimized_users, f"", plot_area_opt)
+        plt.tight_layout()
+        plt.savefig('optimized_hcpp_network.png', dpi=300, bbox_inches='tight')
         plt.show()
 
         # --- Шаг 6: Сравнение распределения нагрузки ---
         print("\n5. Сравнение распределения нагрузки...")
-        load_dist = LoadProfileUserDistribution(Config.get_load_profile_path('default'), create_if_missing=True)
+        load_dist = LoadProfileUserDistribution(Config.get_load_profile_path('24h'), create_if_missing=True)
         NetworkComparator.compare_load_distributions(
             standard_stations, optimized_stations, load_dist,
-            fixed_seed=Config.DEFAULT_SEED
+            fixed_seed=Config.DEFAULT_SEED,
+            max_time_points=None  # Используем все точки для 24 часов
         )
         
         print("\n✅ Демонстрация завершена!")
